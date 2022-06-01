@@ -1,0 +1,21 @@
+<?xml-stylesheet type="text/xsl" href="C:\Users\heuerm\Documents\_\_Matthias\Code\web-xslt\pmathmlascii\pmathmlascii.xsl"?>
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+	<mrow>
+		<msubsup>
+			<mo> &#x222B; </mo>
+			<mn> 0 </mn>
+			<mn> 1 </mn>
+		</msubsup>
+		<mrow>
+			<msup>
+				<mi> &#x2147; </mi>
+				<mi> x </mi>
+			</msup>
+			<mo> &#x2062; </mo>
+			<mrow>
+				<mo> &#x2146; </mo>
+				<mi> x </mi>
+			</mrow>
+		</mrow>
+	</mrow>
+</math>

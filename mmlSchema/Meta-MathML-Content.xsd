@@ -1,0 +1,623 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:mms="http://www.orcca.on.ca/MathML/Schema"
+        targetNamespace="http://www.orcca.on.ca/MathML/Schema"
+        elementFormDefault="qualified"
+        attributeFormDefault="qualified">
+
+ <annotation>
+  <documentation xml:lang="en">
+   Module name: Meta-MathML-Content.xsd
+   Size: 16 KB
+   Meta XML schema for high-level content elements in 
+   MathML. The presentation elements are not included 
+   in the content models.
+   Copyright 2002 ORCCA. All rights reserved.
+  </documentation>
+ </annotation>
+
+ <include schemaLocation="http://www.orcca.on.ca/MathML/Schema/MathMLCommonAtts.xsd"/> 
+ <include schemaLocation="http://www.orcca.on.ca/MathML/Schema/low-levelContent.xsd"/>
+
+ <!-- Content elements: symbols group-->
+ <group name="c0ary">
+  <choice minOccurs="0" maxOccurs="unbounded">
+   <element ref="mms:integers"/>
+   <element ref="mms:reals"/>
+   <element ref="mms:rationals"/>
+   <element ref="mms:naturalnumbers"/>
+   <element ref="mms:complexes"/>
+   <element ref="mms:primes"/>
+   <element ref="mms:exponentiale"/>
+   <element ref="mms:imaginaryi"/>
+   <element ref="mms:notanumber"/>
+   <element ref="mms:true"/>
+   <element ref="mms:false"/>
+   <element ref="mms:emptyset"/>
+   <element ref="mms:pi"/>
+   <element ref="mms:eulergamma"/>
+   <element ref="mms:infinity"/>
+  </choice>
+ </group>
+ 
+ <!-- Content elements: operators -->
+ <group name="cfuncop1ary">
+  <choice minOccurs="0" maxOccurs="unbounded">
+   <element ref="mms:inverse"/>
+   <element ref="mms:ident"/>
+   <element ref="mms:domain"/>
+   <element ref="mms:codomain"/>
+   <element ref="mms:image"/>
+  </choice>
+ </group>
+
+ <group name="carithop1ary">
+  <choice minOccurs="0" maxOccurs="unbounded">
+   <element ref="mms:abs"/>
+   <element ref="mms:conjugate"/>
+   <element ref="mms:exp"/>
+   <element ref="mms:factorial"/>
+   <element ref="mms:arg"/>
+   <element ref="mms:real"/>
+   <element ref="mms:imaginary"/>
+   <element ref="mms:floor"/>
+   <element ref="mms:ceiling"/>
+  </choice>
+ </group>
+
+ <group name="carithop1or2ary">
+  <choice>
+   <element ref="mms:minus" minOccurs="0" maxOccurs="unbounded"/>
+  </choice>
+ </group>
+
+ <group name="carithop2ary">
+  <choice minOccurs="0" maxOccurs="unbounded">
+   <element ref="mms:quotient"/>
+   <element ref="mms:divide"/>
+   <element ref="mms:power"/>
+   <element ref="mms:rem"/>
+  </choice>
+ </group>
+
+ <group name="carithopnary">
+  <choice minOccurs="0" maxOccurs="unbounded">
+   <element ref="mms:plus"/>
+   <element ref="mms:times"/>
+   <element ref="mms:max"/>
+   <element ref="mms:min"/>
+   <element ref="mms:gcd"/>
+   <element ref="mms:lcm"/>
+  </choice>
+ </group> 
+
+ <group name="carithoproot">
+  <choice>
+   <element ref="mms:root" minOccurs="0" maxOccurs="unbounded"/>
+  </choice>
+ </group> 
+
+ <group name="clogicopquant">
+  <choice minOccurs="0" maxOccurs="unbounded">
+   <element ref="mms:exists"/>
+   <element ref="mms:forall"/>
+  </choice>
+ </group> 
+
+ <group name="clogicopnary">
+  <choice minOccurs="0" maxOccurs="unbounded">
+   <element ref="mms:and"/>
+   <element ref="mms:or"/>
+   <element ref="mms:xor"/>
+  </choice>
+ </group> 
+
+ <group name="clogicop1ary">
+  <choice>
+   <element ref="mms:not" minOccurs="0" maxOccurs="unbounded"/>
+  </choice>
+ </group> 
+
+ <group name="clogicop2ary">
+  <choice>
+   <element ref="mms:implies" minOccurs="0" maxOccurs="unbounded"/>
+  </choice>
+ </group> 
+
+ <group name="ccalcop">
+  <choice minOccurs="0" maxOccurs="unbounded">
+   <element ref="mms:log"/>
+   <element ref="mms:int"/>
+   <element ref="mms:diff"/>
+   <element ref="mms:partialdiff"/>
+   <element ref="mms:divergence"/>
+   <element ref="mms:grad"/>
+   <element ref="mms:curl"/>
+   <element ref="mms:laplacian"/>
+  </choice>
+ </group> 
+
+ <group name="ccalcop1ary">
+  <choice>
+   <element ref="mms:ln" minOccurs="0" maxOccurs="unbounded"/>
+  </choice>
+ </group> 
+
+ <group name="csetop1ary">
+  <choice>
+   <element ref="mms:card" minOccurs="0" maxOccurs="unbounded"/>
+  </choice>
+ </group> 
+
+ <group name="csetop2ary">
+  <choice>
+   <element ref="mms:setdiff" minOccurs="0" maxOccurs="unbounded"/>
+  </choice>
+ </group> 
+
+ <group name="csetopnary">
+  <choice minOccurs="0" maxOccurs="unbounded">
+   <element ref="mms:union"/>
+   <element ref="mms:intersect"/>
+   <element ref="mms:cartesianproduct"/>
+  </choice>
+ </group> 
+
+ <group name="cseqop">
+  <choice minOccurs="0" maxOccurs="unbounded">
+   <element ref="mms:sum"/>
+   <element ref="mms:product"/>
+   <element ref="mms:limit"/>
+  </choice>
+ </group> 
+
+ <group name="ctrigop">
+  <choice minOccurs="0" maxOccurs="unbounded">
+   <element ref="mms:sin"/>
+   <element ref="mms:cos"/>
+   <element ref="mms:tan"/>
+   <element ref="mms:sec"/>
+   <element ref="mms:csc"/>
+   <element ref="mms:cot"/>
+   <element ref="mms:sinh"/>
+   <element ref="mms:cosh"/>
+   <element ref="mms:tanh"/>
+   <element ref="mms:sech"/>
+   <element ref="mms:csch"/>
+   <element ref="mms:coth"/>
+   <element ref="mms:arcsin"/>
+   <element ref="mms:arccos"/>
+   <element ref="mms:arctan"/>
+   <element ref="mms:arccosh"/>
+   <element ref="mms:arccot"/>
+   <element ref="mms:arccoth"/>
+   <element ref="mms:arccsc"/>
+   <element ref="mms:arccsch"/>
+   <element ref="mms:arcsec"/>
+   <element ref="mms:arcsech"/>
+   <element ref="mms:arcsinh"/>
+   <element ref="mms:arctanh"/>
+  </choice>
+ </group>
+
+ <group name="cstatopnary">
+  <choice minOccurs="0" maxOccurs="unbounded">
+   <element ref="mms:mean"/>
+   <element ref="mms:sdev"/>
+   <element ref="mms:variance"/>
+   <element ref="mms:median"/>
+   <element ref="mms:mode"/>
+  </choice>
+ </group>
+
+ <group name="cstatopmoment">
+  <choice>
+   <element ref="mms:moment"/>
+  </choice>
+ </group>
+
+ <group name="clalgop1ary">
+  <choice minOccurs="0" maxOccurs="unbounded">
+   <element ref="mms:determinant"/>
+   <element ref="mms:transpose"/>
+  </choice>
+ </group>
+
+ <group name="clalgop2ary">
+  <choice minOccurs="0" maxOccurs="unbounded">
+   <element ref="mms:vectorproduct"/>
+   <element ref="mms:scalarproduct"/>
+   <element ref="mms:outerproduct"/>
+  </choice>
+ </group>
+
+ <group name="clalgopnary">
+  <choice>
+   <element ref="mms:selector" minOccurs="0" maxOccurs="unbounded"/>
+  </choice>
+ </group>
+
+ <!-- Content elements: relations -->
+ <group name="cgenrel2ary">
+  <choice minOccurs="0" maxOccurs="unbounded">
+   <element ref="mms:neq"/>
+   <element ref="mms:factorof"/>
+  </choice>
+ </group>
+
+ <group name="cgenrelnary">
+  <choice minOccurs="0" maxOccurs="unbounded">
+   <element ref="mms:eq"/>
+   <element ref="mms:leq"/>
+   <element ref="mms:lt"/>
+   <element ref="mms:geq"/>
+   <element ref="mms:gt"/>
+   <element ref="mms:equivalent"/>
+   <element ref="mms:approx"/>
+  </choice>
+ </group>
+
+ <group name="csetrel2ary">
+  <choice minOccurs="0" maxOccurs="unbounded">
+   <element ref="mms:in"/>
+   <element ref="mms:notin"/>
+   <element ref="mms:notsubset"/>
+   <element ref="mms:notprsubset"/>
+  </choice>
+ </group>
+
+ <group name="csetrelnary">
+  <choice minOccurs="0" maxOccurs="unbounded">
+   <element ref="mms:subset"/>
+   <element ref="mms:prsubset"/>
+  </choice>
+ </group> 
+
+ <group name="cseqrel2ary">
+  <choice>
+   <element ref="mms:tendsto" minOccurs="0" maxOccurs="unbounded"/>
+  </choice>
+ </group>
+
+ <complexType name="PresInContType">
+   <group ref="mms:PresInCont" minOccurs="0" maxOccurs="unbounded"/>
+ </complexType> 
+
+ <complexType name="sepType">
+  <sequence>
+   <element ref="mms:sep" minOccurs="0" maxOccurs="unbounded"/>
+  </sequence>
+ </complexType> 
+ 
+ <complexType name="ciBaseType">
+  <union memberTypes="mms:MathMLCharacters mms:PresInContType"/>
+ </complexType>    
+
+ <complexType name="cnBaseType">
+  <union memberTypes="mms:MathMLCharacters mms:sepType mms:PresInContType"/>
+ </complexType>
+
+ <complexType name="ctokenBaseType">
+  <complexContent>
+   <extension base="mms:ciBaseType">
+    <attribute ref="mms:encoding"/>
+    <attribute ref="mms:definition"/>
+    <attribute ref="mms:type" use="optional"/>
+   </extension>
+  </complexContent>
+ </complexType>
+
+ <!-- Content elements: leaf nodes --> 
+ <element name="ci" type="mms:ctokenBaseType"/>
+ <element name="csymbol" type="mms:ctokenBaseType"/>
+ <element name="cn">
+  <complexType>
+   <complexContent>
+    <extension base="mms:cnBaseType">
+     <attribute ref="mms:type" use="optional"/>
+     <attribute ref="mms:base"/>
+     <attribute ref="mms:encoding"/>
+     <attribute ref="mms:definition"/>
+    </extension>
+   </complexContent>
+  </complexType>
+ </element>
+ 
+ <group name="ctoken">
+  <choice minOccurs="0" maxOccurs="unbounded">
+   <element ref="mms:csymbol"/>
+   <element ref="mms:ci"/>
+   <element ref="mms:cn"/>
+  </choice>
+ </group>
+
+ <complexType name="ContentExpressionBaseType">
+  <group ref="mms:ContentExpression" minOccurs="0" maxOccurs="unbounded"/>
+  <attributeGroup ref="mms:MATHML.Common.attrib"/>
+ </complexType>
+
+ <!-- Content elements: specials -->
+
+ <element name="apply" type="mms:ContentExpressionBaseType"/>
+ <element name="reln" type="mms:ContentExpressionBaseType"/>
+ <element name="lambda" type="mms:ContentExpressionBaseType"/>
+
+ <group name="cspecial">
+  <choice minOccurs="0" maxOccurs="unbounded">
+   <element ref="mms:apply"/>
+   <element ref="mms:reln"/>
+   <element ref="mms:lambda"/>
+  </choice>
+ </group>
+
+ <!-- Content elements: others -->
+
+ <element name="condition" type="mms:ContentExpressionBaseType"/>
+ <element name="declare">
+  <complexType>
+   <complexContent>
+    <extension base="mms:ContentExpressionBaseType">
+     <attribute ref="mms:type" use="optional"/>
+     <attribute ref="mms:scope"/>     
+     <attribute ref="mms:nargs"/>    
+     <attribute ref="mms:occurrence"/>    
+     <attribute ref="mms:definition"/>    
+     <attribute ref="mms:encoding"/>  
+    </extension>      
+   </complexContent>
+  </complexType>
+ </element>
+
+ <group name="cother">
+  <choice minOccurs="0" maxOccurs="unbounded">
+   <element ref="mms:condition"/>
+   <element ref="mms:declare"/>
+   <element ref="mms:sep"/>
+  </choice>
+ </group>
+
+ <!-- Content elements: semantic mapping -->
+
+ <element name="semantics">
+  <complexType>
+   <complexContent>
+    <extension base="mms:ContentExpressionBaseType">
+     <attribute ref="mms:definition"/>    
+     <attribute ref="mms:encoding"/>  
+    </extension>      
+   </complexContent>
+  </complexType>
+ </element>
+
+ <element name="annotation">
+  <complexType>
+   <complexContent>
+    <extension base="mms:#PCDATA">
+     <attributeGroup ref="mms:MATHML.Common.attrib"/>    
+     <attribute ref="mms:encoding"/>  
+    </extension>      
+   </complexContent>
+  </complexType>
+ </element>
+
+ <element name="annotation-xml" type="anyType"/>  
+
+ <group name="csemantics">
+  <choice minOccurs="0" maxOccurs="unbounded">
+   <element ref="mms:semantics"/>
+   <element ref="mms:annotation"/>
+   <element ref="mms:annotation-xml"/>
+  </choice>
+ </group>
+
+ <!-- Content elements: constructors -->
+
+ <element name="interval">
+  <complexType>
+   <complexContent>
+    <extension base="mms:ContentExpressionBaseType">
+     <attribute ref="mms:closure"/>    
+    </extension>      
+   </complexContent>
+  </complexType>
+ </element>
+
+ <element name="set">
+  <complexType>
+   <complexContent>
+    <extension base="mms:ContentExpressionBaseType">
+     <attribute ref="mms:type" use=optional/>    
+    </extension>      
+   </complexContent>
+  </complexType>
+ </element>
+
+ <element name="list">
+  <complexType>
+   <complexContent>
+    <extension base="mms:ContentExpressionBaseType">
+     <attribute ref="mms:order"/>    
+    </extension>      
+   </complexContent>
+  </complexType>
+ </element>
+
+ <element name="vector" type="mms:ContentExpressionBaseType"/>
+ <element name="matrix" type="mms:ContentExpressionBaseType"/>
+ <element name="matrixrow" type="mms:ContentExpressionBaseType"/>
+ <element name="piecewise">
+  <complexType>
+   <seuence>
+    <element ref="mms:piece" minOccurs="0" maxOccurs="unbounded"/>
+    <element ref="mms:otherwise" minOccurs="0" maxOccurs="1"/>
+   </sequence>
+   <attributeGroup ref="mms:MATHML.Common.attrib"/>   
+  </complexType>
+ </element> 
+ <element name="piece" type="mms:ContentExpressionBaseType"/>
+ <element name="otherwise" type="mms:ContentExpressionBaseType"/>
+
+ <group name="cconstructor">
+  <choice minOccurs="0" maxOccurs="unbounded">
+   <element ref="mms:interval"/>
+   <element ref="mms:list"/>
+   <element ref="mms:matrix"/>
+   <element ref="mms:matrixrow"/>
+   <element ref="mms:set"/>
+   <element ref="mms:vector"/>
+   <element ref="mms:piecewise"/>
+  </choice>
+ </group>
+
+ <element name="fn">
+  <complexType>
+   <complexContent>
+    <extension base="mms:ContentExpressionBaseType">
+     <attribute ref="mms:definition"/>    
+     <attribute ref="mms:encoding"/>  
+    </extension>      
+   </complexContent>
+  </complexType>
+ </element> 
+
+ <group name="cfuncopnary">
+  <choice minOccurs="0" maxOccurs="unbounded">
+   <element ref="mms:fn"/>
+   <element ref="mms:compose"/>
+  </choice>
+ </group>
+ 
+ <!-- Content elements: quantifiers -->
+
+ <element name="lowlimit" type="mms:ContentExpressionBaseType"/>
+ <element name="uplimit" type="mms:ContentExpressionBaseType"/>
+ <element name="bvar" type="mms:ContentExpressionBaseType"/>
+ <element name="degree" type="mms:ContentExpressionBaseType"/>
+ <element name="logbase" type="mms:ContentExpressionBaseType"/>
+ <element name="momentabout" type="mms:ContentExpressionBaseType"/>
+ <element name="domainofapplication" type="mms:ContentExpressionBaseType"/>
+
+ <group name="cquantifier">
+  <choice minOccurs="0" maxOccurs="unbounded">
+   <element ref="mms:lowlimit"/>
+   <element ref="mms:uplimit"/>
+   <element ref="mms:bvar"/>
+   <element ref="mms:degree"/>
+   <element ref="mms:logbase"/>
+   <element ref="mms:momentabout"/>
+   <element ref="mms:domainofapplication"/>
+  </choice>
+ </group>
+
+ <!-- Operator groups -->
+ <group name="cop1ary">
+  <choice minOccurs="0" maxOccurs="unbounded">
+   <group ref="mms:cfuncop1ary"/>
+   <group ref="mms:carithop1ary"/>
+   <group ref="mms:clogicop1ary"/>
+   <group ref="mms:ccalcop1ary"/>
+   <group ref="mms:ctrigop"/>
+   <group ref="mms:clalgop1ary"/>
+   <group ref="mms:csetop1ary"/>
+  </choice>
+ </group>
+ 
+ <group name="cop2ary">
+  <choice minOccurs="0" maxOccurs="unbounded">
+   <group ref="mms:carithop2ary"/>
+   <group ref="mms:clogicop2ary"/>
+   <group ref="mms:clalgop2ary"/>
+   <group ref="mms:csetop2ary"/>
+  </choice>
+ </group>
+
+ <group name="copnary">
+  <choice minOccurs="0" maxOccurs="unbounded">
+   <group ref="mms:cfuncopnary"/>
+   <group ref="mms:carithopnary"/>
+   <group ref="mms:clogicopnary"/>
+   <group ref="mms:csetopnary"/>
+   <group ref="mms:cstatopnary"/>
+   <group ref="mms:clalgopnary"/>
+  </choice>
+ </group>
+
+ <group name="copmisc">
+  <choice minOccurs="0" maxOccurs="unbounded">
+   <group ref="mms:carithoproot"/>
+   <group ref="mms:carithop1or2ary"/>
+   <group ref="mms:ccalcop"/>
+   <group ref="mms:cseqop"/>
+   <group ref="mms:cstatopmoment"/>
+   <group ref="mms:clogicopquant"/>
+  </choice>
+ </group>
+
+ <!-- Relation groups -->
+ <group name="crel2ary">
+  <choice minOccurs="0" maxOccurs="unbounded">
+   <group ref="mms:cgenrel2ary"/>
+   <group ref="mms:csetrel2ary"/>
+   <group ref="mms:cseqrel2ary"/>
+  </choice>
+ </group>
+
+ <group name="crelnary">
+  <choice minOccurs="0" maxOccurs="unbounded">
+   <group ref="mms:cgenrelnary"/>
+   <group ref="mms:csetrelnary"/>
+  </choice>
+ </group>
+
+ <!-- Content constructs: all -->
+ <group name="Content">
+  <choice minOccurs="0" maxOccurs="unbounded">
+   <group ref="mms:ctoken"/>
+   <group ref="mms:cspecial"/>
+   <group ref="mms:"cother/>
+   <group ref="mms:csemantics"/>
+   <group ref="mms:c0ary"/>
+   <group ref="mms:cconstructor"/>
+   <group ref="mms:cquantifier"/>
+   <group ref="mms:cop1ary"/>
+   <group ref="mms:cop2ary"/>
+   <group ref="mms:copnary"/>
+   <group ref="mms:copmisc"/>
+   <group ref="mms:crel2ary"/>
+   <group ref="mms:crelnary"/>
+  </choice>
+ </group>
+
+ <!-- Content constructs for substitution in presentation structures -->
+ <group name="ContInPres">
+  <choice minOccurs="0" maxOccurs="unbounded">
+   <element ref="mms:ci"/>
+   <element ref="mms:csymbol"/>
+   <element ref="mms:cn"/>
+   <group ref="mms:c0ary"/>
+   <element ref="mms:apply"/>
+   <element ref="mms:fn"/>
+   <element ref="mms:lambda"/>
+   <element ref="mms:reln"/>
+   <group ref="mms:cconstructor"/>
+   <element ref="mms:semantics"/>
+   <element ref="mms:declare"/>
+  </choice>
+ </group>
+
+ <!-- Recursive definition for content of expressions -->
+ <group name="ContentExpression">
+  <choice>
+   <group ref="mms:Content" minOccurs="0" maxOccurs="unbounded"/>
+  </choice>
+ </group>
+
+</schema>
+
+
+
+
+
+
+
+
+

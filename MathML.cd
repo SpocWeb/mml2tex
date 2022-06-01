@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="org.structs.root.Data.xmls.MathML.AMathMlNode" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAEAAAAQAACACDAAAAAAAAAgAAACAA=</HashCode>
+      <FileName>AMathMlNode.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="org.structs.root.Data.xmls.MathML.MathMlTextNode" Collapsed="true">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAoAAAAAAAAAAAAACAACAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>MathMLTextNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="org.structs.root.Data.xmls.MathML.MElement" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAACAAAECIAAAUACAAIEAAACESCEAAAABQIQgAAAAAA=</HashCode>
+      <FileName>MElement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="org.structs.root.Data.xmls.MathML.Elements.MAction" Collapsed="true">
+    <Position X="1.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Elements\MAction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="org.structs.root.Data.xmls.MathML.Elements.MEnclose" Collapsed="true">
+    <Position X="3.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAgAAAAAAACAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Elements\MEnclose.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="org.structs.root.Data.xmls.MathML.Elements.MFraction" Collapsed="true">
+    <Position X="6" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAgAAEAAAAAAAAAAAACEAAAAIEAAAACAAAA=</HashCode>
+      <FileName>Elements\MFraction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="org.structs.root.Data.xmls.MathML.Elements.MGlyph" Collapsed="true">
+    <Position X="2.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABgABIEAAAAAAAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Elements\MGlyph.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="org.structs.root.Data.xmls.MathML.Elements.MLongDivision" Collapsed="true">
+    <Position X="10.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Elements\MLongDivision.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="org.structs.root.Data.xmls.MathML.Elements.MMultiElement" Collapsed="true">
+    <Position X="0.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Elements\MMultiElement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="org.structs.root.Data.xmls.MathML.Elements.MPreScripts" Collapsed="true">
+    <Position X="12.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Elements\MMultiScripts.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="org.structs.root.Data.xmls.MathML.Elements.MMultiScripts" Collapsed="true">
+    <Position X="11.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAABEAAAAAAAAAAEAAIAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>Elements\MMultiScripts.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="org.structs.root.Data.xmls.MathML.Elements.MOver" Collapsed="true">
+    <Position X="15" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAIAAAACAACAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>Elements\MOver.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="org.structs.root.Data.xmls.MathML.Elements.MPadded" Collapsed="true">
+    <Position X="2.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAEEAAAAEAAEAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Elements\MPadded.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="org.structs.root.Data.xmls.MathML.Elements.MPhantom" Collapsed="true">
+    <Position X="5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Elements\MPhantom.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="org.structs.root.Data.xmls.MathML.Elements.MRoot" Collapsed="true">
+    <Position X="7.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAACAAAAAAAEAAAIAAAA=</HashCode>
+      <FileName>Elements\MRoot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="org.structs.root.Data.xmls.MathML.Elements.MSpace" Collapsed="true">
+    <Position X="9.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAEAAAAAAAEAAEACAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Elements\MSpace.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="org.structs.root.Data.xmls.MathML.Elements.MSquareRoot" Collapsed="true">
+    <Position X="8.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Elements\MSquareRoot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="org.structs.root.Data.xmls.MathML.Elements.MSubScript" Collapsed="true">
+    <Position X="17.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEgAAAAAAAAAAACAAAAAAAAAAAAAQAQ=</HashCode>
+      <FileName>Elements\MSubScript.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="org.structs.root.Data.xmls.MathML.Elements.MSuperScript" Collapsed="true">
+    <Position X="13.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAEgAAAAAAAAAAACAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>Elements\MSuperScript.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="org.structs.root.Data.xmls.MathML.Elements.MUnder" Collapsed="true">
+    <Position X="19.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAACAACAAAQAAAAAAAAAQAA=</HashCode>
+      <FileName>Elements\MUnder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="org.structs.root.Data.xmls.MathML.Elements.MUnderOver" Collapsed="true">
+    <Position X="19.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAQEAAAAIAAAAAAACAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Elements\MUnderOver.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="org.structs.root.Data.xmls.MathML.Elements.MSubScriptSuperScript" Collapsed="true">
+    <Position X="17.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAEAAAAAAAAAAEACIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Elements\MSubScriptSuperScript.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="org.structs.root.Data.xmls.MathML.Elements.MFenced" Collapsed="true">
+    <Position X="20.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAAAAAAAAAAAAAACAAAAAAACAAAA=</HashCode>
+      <FileName>Elements\MFenced.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="org.structs.root.Data.xmls.MathML.Elements.MIdentifier" Collapsed="true">
+    <Position X="2.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Elements\MIdentifier.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="org.structs.root.Data.xmls.MathML.Elements.Math" Collapsed="true">
+    <Position X="5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQIAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Elements\MMath.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="org.structs.root.Data.xmls.MathML.Elements.MNumber" Collapsed="true">
+    <Position X="7.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>Elements\MNumber.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="org.structs.root.Data.xmls.MathML.Elements.MOperator" Collapsed="true">
+    <Position X="9.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAIAEAACAAAAAAACAAAAABAAiAAAAAEAAAA=</HashCode>
+      <FileName>Elements\MOperator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="org.structs.root.Data.xmls.MathML.Elements.MRow" Collapsed="true">
+    <Position X="11.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Elements\MRow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="org.structs.root.Data.xmls.MathML.Elements.MStyle" Collapsed="true">
+    <Position X="14" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAQCAAAAAQAIAAAAQAAAQAAA=</HashCode>
+      <FileName>Elements\MStyle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="org.structs.root.Data.xmls.MathML.Elements.MTable" Collapsed="true">
+    <Position X="16.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAFggEAAgEAAAEAAAUACAAAEAAAkAAAQBAE=</HashCode>
+      <FileName>Elements\MTable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="org.structs.root.Data.xmls.MathML.Elements.MTableCell" Collapsed="true">
+    <Position X="18.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAgAAAAAAQAAAAAAAAAgAEAAAAAAA=</HashCode>
+      <FileName>Elements\MTableCell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="org.structs.root.Data.xmls.MathML.Elements.MTableRow" Collapsed="true">
+    <Position X="0.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAgAAAAAAAAQAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Elements\MTableRow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="org.structs.root.Data.xmls.MathML.Elements.MText" Collapsed="true">
+    <Position X="23" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Elements\MText.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="org.structs.root.Data.xmls.MathML.Elements.MLabeledTableRow" Collapsed="true">
+    <Position X="0.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Elements\MLabeledTableRow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

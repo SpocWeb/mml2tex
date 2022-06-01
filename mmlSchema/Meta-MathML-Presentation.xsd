@@ -1,0 +1,644 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:mms="http://www.orcca.on.ca/MathML/Schema"
+        targetNamespace="http://www.orcca.on.ca/MathML/Schema"
+        elementFormDefault="qualified"
+        attributeFormDefault="qualified">
+
+ <annotation>
+  <documentation xml:lang="en">
+   Module name: Meta-MathML-Presentation.xsd
+   Size: 18 KB
+   Meta XML schema for presentation MathML. The content 
+   elements are not included in the content models.
+   Copyright 2002 ORCCA. All rights reserved.
+  </documentation>
+ </annotation>
+
+ <include schemaLocation="http://www.orcca.on.ca/MathML/Schema/MathMLCommonAtts.xsd"/>
+
+ <!-- global attribute and attribute group declaration -->
+
+ <attribute name="fontsize" type="string"/>
+ <attribute name="fontweight"> 
+  <simpleType>
+   <restriction base="string">
+    <enumeration value="normal"/>
+     <enumeration value="bold"/>
+   </restriction>
+  </simpleType>    
+ </attribute>
+ <attribute name="fontstyle"> 
+  <simpleType>
+   <restriction base="string">
+    <enumeration value="normal"/>
+    <enumeration value="italic"/>
+   </restriction>
+  </simpleType>    
+ </attribute>
+ <attribute name="fontfamily" type="string"/>
+ <attribute name="color" type="string"/>
+ <attribute name="mathvariant" type="string"/>
+ <attribute name="mathsize" type="string"/>
+ <attribute name="mathcolor" type="string"/>
+ <attribute name="mathbackground" type="string"/>
+
+ <attributeGroup name="fontinfo">
+  <attribute ref="mms:fontsize" use="optional"/>
+  <attribute ref="mms:fontweight" use="optional"/>  
+  <attribute ref="mms:fontstyle" use="optional"/> 
+  <attribute ref="mms:fontfamily" use="optional"/>
+  <attribute ref="mms:color" use="optional"/>
+  <attribute ref="mms:mathvariant" use="optional"/>
+  <attribute ref="mms:mathsize" use="optional"/>
+  <attribute ref="mms:mathcolor" use="optional"/>
+  <attribute ref="mms:mathbackground" use="optional"/>
+ </attributeGroup>
+
+ <attribute name="form"> 
+  <simpleType>
+   <restriction base="string">
+    <enumeration value="prefix"/>
+    <enumeration value="infix"/>
+    <enumeration value="postfix"/>
+   </restriction>
+  </simpleType>    
+ </attribute>
+ <attribute name="fence" type="boolean"/>
+ <attribute name="seperator" type="boolean"/>
+ <attribute name="lspace" type="string"/>
+ <attribute name="rspace" type="string"/>
+ <attribute name="stretchy" type="boolean"/>
+ <attribute name="symmetric" type="boolean"/>
+ <attribute name="maxsize" type="string"/>
+ <attribute name="minsize" type="string"/>
+ <attribute name="largeop" type="boolean"/>
+ <attribute name="movablelimits" type="boolean"/>
+ <attribute name="accent" type="boolean"/>
+
+ <attributeGroup name="opinfo">
+  <attribute ref="mms:form" use="optional"/> 
+  <attribute ref="mms:fence" use="optional"/>
+  <attribute ref="mms:seperator" use="optional"/>
+  <attribute ref="mms:lspace" use="optional"/>
+  <attribute ref="mms:rspace" use="optional"/>
+  <attribute ref="mms:stretchy" use="optional"/>
+  <attribute ref="mms:symmetric" use="optional"/>
+  <attribute ref="mms:maxsize" use="optional"/>
+  <attribute ref="mms:minsize" use="optional"/>
+  <attribute ref="mms:largeop" use="optional"/>
+  <attribute ref="mms:movablelimits" use="optional"/>
+  <attribute ref="mms:accent" use="optional"/>
+ </attributeGroup>
+
+ <attribute name="width" type="string"/>
+ <attribute name="height" type="string"/>
+ <attribute name="depth" type="string"/>
+ <attribute name="linebreak" type="string"/>
+
+ <attributeGroup name="sizeinfo">
+  <attribute ref="mms:width" use="optional"/>
+  <attribute ref="mms:height" use="optional"/>
+  <attribute ref="mms:depth" use="optional"/>
+ </attributeGroup>
+
+ <attribute name="lquote" type="string"/>
+ <attribute name="rquote" type="string"/>
+ <attribute name="linethickness" type="string"/>
+ <attribute name="scriptlevel" type="string"/>
+ <attribute name="displaystyle" type="boolean"/>
+ <attribute name="scriptsizemultiplier" type="string"/>
+ <attribute name="scriptminsize" type="string"/>
+ <attribute name="background" type="string"/>
+ <attribute name="veryverythinmathspace" type="string"/>
+ <attribute name="verythinmathspace" type="string"/>
+ <attribute name="thinmathspace" type="string"/>
+ <attribute name="mediummathspace" type="string"/>
+ <attribute name="thickmathspace" type="string"/>
+ <attribute name="verythickmathspace" type="string"/>
+ <attribute name="veryverythickmathspace" type="string"/>
+ <attribute name="open" type="string"/>
+ <attribute name="close" type="string"/>
+ <attribute name="separators" type="string"/>
+ <attribute name="subscriptshift" type="string"/>
+ <attribute name="superscriptshift" type="string"/>
+ <attribute name="accentunder" type="boolean"/>
+
+ <attribute name="align" type="string"/>
+ <attribute name="rowalign" type="string"/>
+ <attribute name="columnalign" type="string"/>
+ <attribute name="columnwidth" type="string"/>
+ <attribute name="groupalign" type="string"/>
+ <attribute name="alignmentscope" type="string"/>
+ <attribute name="rowspacing" type="string"/>
+ <attribute name="columnspacing" type="string"/>
+ <attribute name="rowlines" type="string"/>
+ <attribute name="columnlines" type="string"/>
+ <attribute name="frame">
+  <simpleType>
+   <restriction base="string">
+    <enumeration value="none"/>
+    <enumeration value="solid"/>
+    <enumeration value="dashed"/>
+    </restriction>
+  </simpleType>
+ </attribute>
+ <attribute name="framespacing" type="string"/>
+ <attribute name="equalrows" type="string"/>
+ <attribute name="equalcolumns" type="string"/>
+ <attribute name="displaystyle" type="boolean"/>
+
+ <attributeGroup name="tableinfo">
+  <attribute ref="mms:align" use="optional"/>
+  <attribute ref="mms:rowalign" use="optional"/>
+  <attribute ref="mms:columnalign" use="optional"/>
+  <attribute ref="mms:columnwidth" use="optional"/>
+  <attribute ref="mms:groupalign" use="optional"/>
+  <attribute ref="mms:alignmentscope" use="optional"/>
+  <attribute ref="mms:rowspacing" use="optional"/>
+  <attribute ref="mms:columnspacing" use="optional"/>
+  <attribute ref="mms:rowlines" use="optional"/>
+  <attribute ref="mms:columnlines" use="optional"/>
+  <attribute ref="mms:frame" use="optional"/>
+  <attribute ref="mms:framespacing" use="optional"/>
+  <attribute ref="mms:equalrows" use="optional"/>
+  <attribute ref="mms:equalcolumns" use="optional"/>
+  <attribute ref="mms:displaystyle" use="optional"/>
+ </attributeGroup>
+
+ <attribute name="rowspan" type="string"/>  
+ <attribute name="columnspan" type="string"/>
+ <attribute name="edge">
+  <simpleType>
+   <restriction base="string">
+    <enumeration value="left"/>
+    <enumeration value="right"/>
+   </restriction>
+  </simpleType>
+ </attribute>
+ <attribute name="actiontype" type="string"/>
+ <attribute name="selection" type="string"/>
+ <attribute name="name" type="string"/>
+ <attribute name="alt" type="string"/>
+ <attribute name="index" type="string"/>
+ <attribute name="bevelled" type="string"/>
+
+ <!-- end of attribute and attribute group declaration -->
+
+ <!-- Presentation schemata with content -->
+
+ <!-- empty elements definition -->
+ <element name="mglyph">
+  <complexType>      
+   <attribute ref="mms:alt" use="optional"/>
+   <attribute ref="mms:fontfamily" use="optional"/>
+   <attribute ref="mms:index" use="optional"/>
+  </complexType> 
+ </element>  
+
+ <complexType name="mglyphType">
+  <sequence>
+   <element ref="mms:mglyph" minOccurs="0" maxOccurs="unbounded"/>
+  </sequence>
+ </complexType>
+
+ <simpleType name="#PCDATA" type="string"/>
+
+ <!-- PCDATA or MathML character elements -->
+ <complexType name="MathMLCharacters">
+  <union memberTypes="mms:#PCDATA mms:mglyphType"/>
+ </complexType>
+
+ <element name="mspace">
+  <complexType>
+   <attributeGroup ref="mms:sizeinfo"/>
+   <attribute ref="mms:linebreak" use="optional"/>
+   <attributeGroup ref="mms:MATHML.Common.attrib"/>
+  </complexType> 
+ </element>
+
+ <!-- Empty presentation schemata -->
+ <group name="petoken">
+  <element ref="mms:mspace" minOccurs="0" maxOccurs="unbounded"/>
+ </group>
+
+ <element name="mprescripts" type="mms:pscreschemaType"/>
+    
+ <element name="none" type="mms:pscreschemaType"/>
+
+ <complexType name="pscreschemaType">
+  <attributeGroup ref="mms:MATHML.xmlns.attrib"/>
+ </complexType>
+
+ <!-- Presentation layout schemata: empty elements for scripts -->
+ <group name="pscreschema">
+  <choice minOccurs="0" maxOccurs="unbounded">
+   <element ref="mms:mprescripts"/>
+   <element ref="mms:none"/>
+  </choice>
+ </group>
+
+ <element name="malignmark">
+  <complexType>
+   <attribute ref="mms:edge" use="optional"/>
+  </complexType> 
+ </element>  
+
+ <element name="maligngroup">
+  <complexType>      
+   <attributeGroup ref="mms:MATHML.Common.attrib"/>
+   <attribute ref="mms:groupalign" use="optional"/>
+  </complexType> 
+ </element>
+  
+ <!-- Presentation elements contain PCDATA or malignmark constructs. -->
+ <element name="mi" type="mms:tokenmiType"/>
+ <element name="mn" type="mms:tokenmiType"/>
+ <element name="mo" type="mms:tokenmoType"/>
+ <element name="mtext" type="mms:tokenmiType"/>
+ <element name="ms" type="mms:tokenmsType"/>
+
+ <group name="ptoken">
+  <choice minOccurs="0" maxOccurs="unbounded">
+   <element ref="mms:mi"/>
+   <element ref="mms:mn"/>
+   <element ref="mms:mo"/>
+   <element ref="mms:mtext"/>
+   <element ref="mms:ms"/>
+  </choice>
+ </group>
+
+ <complexType name="malignmarkType">
+  <sequence>
+   <element ref="mms:malignmark" minOccurs="0" maxOccurs="unbounded"/>
+  </sequence>
+ </complexType>
+
+ <complexType name="tokenBaseType">
+  <union memberTypes="mms:MathMLCharacters mms:malignmarkType"/>
+ </complexType>
+
+ <complexType name="tokenmiType">
+  <complexContent>
+   <extension base="mms:tokenBaseType">
+    <attributeGroup ref="mms:MATHML.xmlns.attrib"/>
+    <attributeGroup ref="mms:fontinfo"/>
+   </extension>
+  </complexContent>
+ </complexType>  
+
+ <complexType name="tokenmoType">
+  <complexContent>
+   <extension base="mms:tokenmiType">
+    <attributeGroup ref="mms:opinfo"/>
+   </extension>      
+  </complexContent>
+ </complexType>
+
+ <complexType name="tokenmsType">
+  <complexContent>
+   <extension base="mms:tokenmiType">
+    <attribute ref="mms:lquote" use="optional"/>
+    <attribute ref="mms:rquote" use="optional"/>
+   </extension>      
+  </complexContent>
+ </complexType>
+
+ <!-- Presentation: general layout schemata -->
+ <element name="mrow" type="PresBaseType"/>
+ <element name="mfrac" type=mfracType""/>
+ <element name="msqrt" type="PresBaseType"/>
+ <element name="mroot" type="PresBaseType"/>
+ <element name="menclose" type="mencloseType"/>
+ <element name="mstyle" type="mstyleType"/>
+ <element name="merror" type="PresBaseType"/>
+ <element name="mpadded" type="mpaddedType"/>
+ <element name="mphantom" type="PresBaseType"/>
+ <element name="mfenced" type="mfencedType"/>
+
+ <group name="pgenschema">
+  <choice minOccurs="0" maxOccurs="unbounded">
+   <element ref="mms:mrow"/>
+   <element ref="mms:mfrac"/>
+   <element ref="mms:msqrt"/>
+   <element ref="mms:mroot"/>
+   <element ref="mms:menclose"/>
+   <element ref="mms:mstyle"/>
+   <element ref="mms:merror"/>
+   <element ref="mms:mpadded"/>
+   <element ref="mms:mphantom"/>
+   <element ref="mms:mfenced"/>
+  </choice>
+ </group>
+
+ <complexType name="PresBaseType">
+  <group ref="mms:PresExpression" minOccurs="0" maxOccurs="unbounded"/>
+  <attributeGroup ref="mms:MATHML.Common.attrib"/>
+ </complexType>
+
+ <complexType name="mfracType">
+  <complexContent>
+   <extension base="mms:PresBaseType">
+    <attribute ref="mms:bevelled" use="optional"/>
+    <attribute ref="mms:linethickness" use="optional"/>
+   </extension>      
+  </complexContent>
+ </complexType>
+
+ <complexType name="mencloseType">
+  <complexContent>
+   <extension base="mms:PresBaseType">
+    <attribute name="notation" type="string" default="longdiv"/>
+   </extension>      
+  </complexContent>
+ </complexType>
+
+ <complexType name="mstyleType">
+  <complexContent>
+   <extension base="mms:PresBaseType">
+    <attributeGroup ref="mms:fontinfo"/>
+    <attributeGroup ref="mms:opinfo"/>
+    <attribute ref="mms:lquote use="optional""/>
+    <attribute ref="mms:rquote" use="optional"/>
+    <attribute ref="mms:linethickness" use="optional"/>  
+    <attribute ref="mms:scriptlevel" use="optional"/>
+    <attribute ref="mms:scriptsizemultiplier" use="optional"/>
+    <attribute ref="mms:scriptminsize" use="optional"/>
+    <attribute ref="mms:background" use="optional"/>  
+    <attribute ref="mms:veryverythinmathspace" use="optional"/>
+    <attribute ref="mms:verythinmathspace" use="optional"/>
+    <attribute ref="mms:thinmathspace" use="optional"/>
+    <attribute ref="mms:mediummathspace" use="optional"/>  
+    <attribute ref="mms:thickmathspace" use="optional"/>
+    <attribute ref="mms:verythickmathspace" use="optional"/>
+    <attribute ref="mms:veryverythickmathspace" use="optional"/>
+    <attribute ref="mms:open" use="optional"/>  
+    <attribute ref="mms:close" use="optional"/>
+    <attribute ref="mms:separators" use="optional"/>
+    <attribute ref="mms:subscriptshift" use="optional"/>
+    <attribute ref="mms:superscriptshift" use="optional"/>  
+    <attribute ref="mms:accentunder" use="optional"/>
+    <attributeGroup ref="mms:tableinfo"/>
+    <attribute ref="mms:rowspan" use="optional"/>
+    <attribute ref="mms:columnspan" use="optional"/>  
+    <attribute ref="mms:edge" use="optional"/>
+    <attribute ref="mms:actiontype" use="optional"/>
+    <attribute ref="mms:selection" use="optional"/>
+   </extension>      
+  </complexContent>
+ </complexType>  
+
+ <complexType name="mpaddedType">
+  <complexContent>
+   <extension base="mms:PresBaseType">
+    <attributeGroup ref="mms:sizeinfo"/>
+    <attribute ref="mms:lspace" use="optional"/>
+   </extension>      
+  </complexContent>
+ </complexType>
+
+ <complexType name="mfencedType">
+  <complexContent>
+   <extension base="mms:PresBaseType">
+    <attribute ref="mms:open" use="optional"/>
+    <attribute ref="mms:close" use="optional"/>
+    <attribute ref="mms:separators" use="optional"/>
+   </extension>      
+  </complexContent>
+ </complexType>
+  
+ <!-- Presentation layout schemata: scripts and limits -->
+ <element name="msub" type="msubType"/>
+ <element name="msup" type="msupType"/>
+ <element name="msubsup" type="msubsupType"/>
+ <element name="munder" type="munderType"/>
+ <element name="mover" type="moverType"/>
+ <element name="munderover" type="munderoverType"/>
+ <element name="mmultiscripts" type="msubsupType"/>
+
+ <group name="pscrschema">
+  <choice minOccurs="0" maxOccurs="unbounded">
+   <element ref="mms:msub"/>
+   <element ref="mms:msup"/>
+   <element ref="mms:msubsup"/>
+   <element ref="mms:munder"/>
+   <element ref="mms:mover"/>
+   <element ref="mms:munderover"/>
+   <element ref="mms:mmultiscripts"/>
+  </choice>
+ </group>      
+
+ <complexType name="msubType">
+  <complexContent>
+   <extension base="mms:PresBaseType">
+    <attribute ref="mms:subscriptshift" use="optional"/>
+   </extension>      
+  </complexContent>
+ </complexType>
+
+ <complexType name="msupType">
+  <complexContent>
+   <extension base="mms:PresBaseType">
+    <attribute ref="mms:superscriptshift" use="optional"/>
+   </extension>      
+  </complexContent>
+ </complexType>
+
+ <complexType name="msubsupType">
+  <complexContent>
+   <extension base="mms:PresBaseType">
+    <attribute ref="mms:subscriptshift" use="optional"/>
+    <attribute ref="mms:superscriptshift" use="optional"/>
+   </extension>      
+  </complexContent>
+ </complexType>
+
+ <complexType name="munderType">
+  <complexContent>
+   <extension base="mms:PresBaseType">
+    <attribute ref="mms:accentunder" use="optional"/>
+   </extension>      
+  </complexContent>
+ </complexType>
+
+ <complexType name="moverType">
+  <complexContent>
+   <extension base="mms:PresBaseType">
+    <attribute ref="mms:accent" use="optional"/>
+   </extension>      
+  </complexContent>
+ </complexType>
+
+ <complexType name="munderoverType">
+  <complexContent>
+   <extension base="mms:PresBaseType">
+    <attribute ref="mms:accent" use="optional"/>
+    <attribute ref="mms:accentunder" use="optional"/>
+   </extension>      
+  </complexContent>
+ </complexType>
+
+ <!-- Presentation layout schemata: tables -->
+ <element name="mtable" type="mtableType"/>
+ <element name="mtr" type="mtrType"/>
+ <element name="mlabeledtr" type="mtrType"/>
+ <element name="mtd" type="mtdType"/>
+
+ <group name="ptabschema">
+  <choice minOccurs="0" maxOccurs="unbounded">
+   <element ref="mms:mtable"/>
+   <element ref="mms:mtr"/>
+   <element ref="mms:mlabeledtr"/>
+   <element ref="mms:mtd"/>
+  </choice>
+ </group>  
+
+ <complexType name="mtableType">
+  <complexContent>
+   <extension base="mms:PresBaseType">
+    <attributeGroup ref="mms:tableinfo"/>
+   </extension>      
+  </complexContent>
+ </complexType> 
+
+ <complexType name="mtrType">
+  <complexContent>
+   <extension base="mms:PresBaseType">
+    <attribute ref="mms:rowalign" use="optional"/>
+    <attribute ref="mms:columnalign" use="optional"/>
+    <attribute ref="mms:groupalign" use="optional"/>
+   </extension>      
+  </complexContent>
+ </complexType>
+
+ <complexType name="mtdType">
+  <complexContent>
+   <extension base="mms:PresBaseType">
+    <attribute ref="mms:rowalign" use="optional"/>
+    <attribute ref="mms:columnalign" use="optional"/>
+    <attribute ref="mms:groupalign" use="optional"/>
+    <attribute ref="mms:rowspan" use="optional"/>
+    <attribute ref="mms:columnspan" use="optional"/>  
+   </extension>      
+  </complexContent>
+ </complexType>
+ 
+ <group name="plschema">
+  <choice minOccurs="0" maxOccurs="unbounded">
+   <group ref="mms:pgenschema"/>
+   <group ref="mms:pscrchema"/>
+   <group ref="mms:ptabschema"/>
+  </choice>
+ </group>
+
+ <!-- Presentation action schemata -->
+ <element name="maction">
+  <complexType>
+   <complexContent>
+    <extension base="mms:PresBaseType">
+     <attribute ref="mms:actiontype" use="optional"/>
+     <attribute ref="mms:selection" use="optional"/>
+    </extension>      
+   </complexContent>
+  </complexType>
+ </element>
+
+ <group name="pactions">
+  <sequence>
+   <element ref="mms:maction" minOccurs="0" maxOccurs="unbounded"/>
+  </sequence>
+ </group>  
+
+ <!-- The following for substitution into
+      content constructs excludes elements that
+      are not valid as expressions.
+ -->
+ <group name="PresInCont">
+  <choice minOccurs="0" maxOccurs="unbounded">
+   <group ref="mms:ptoken"/>
+   <group ref="mms:petoken"/>
+   <group ref="mms:plschema"/>
+   <group ref="mms:peschema"/>
+   <group ref="mms:pactions"/>
+  </choice>
+ </group>
+
+ <!-- Presentation element group: all presentation constructs -->
+ <group name="Presentation">
+  <choice minOccurs="0" maxOccurs="unbounded">
+   <group ref="mms:ptoken"/>
+   <group ref="mms:petoken"/>
+   <group ref="mms:pscrechema"/>
+   <group ref="mms:plschema"/>
+   <group ref="mms:peschema"/>
+   <group ref="mms:pactions"/>
+  </choice>
+ </group> 
+
+ <!-- Recursive definition for content of expressions -->
+ <group name="PresExpression">
+  <choice>
+   <group ref="mms:Presentation" minOccurs="0" maxOccurs="unbounded"/>
+  </choice>
+ </group> 
+
+</schema>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

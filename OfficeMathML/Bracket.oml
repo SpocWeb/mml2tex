@@ -1,0 +1,175 @@
+<m:oMath xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math">
+  <m:sSup>
+    <m:sSupPr>
+      <m:ctrlPr>
+        <w:rPr xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+          <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math" />
+        </w:rPr>
+      </m:ctrlPr>
+    </m:sSupPr>
+    <m:e>
+      <w:bookmarkStart w:name="_GoBack" w:id="0" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" />
+      <m:d>
+        <m:dPr>
+          <m:begChr m:val="[" />
+          <m:endChr m:val="]" />
+          <m:ctrlPr>
+            <w:rPr xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+              <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math" />
+            </w:rPr>
+          </m:ctrlPr>
+        </m:dPr>
+        <m:e>
+          <m:f>
+            <m:fPr>
+              <m:ctrlPr>
+                <w:rPr xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+                  <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math" />
+                  <w:i />
+                </w:rPr>
+              </m:ctrlPr>
+            </m:fPr>
+            <m:num>
+              <m:r>
+                <w:rPr xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+                  <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math" />
+                </w:rPr>
+                <m:t>n</m:t>
+              </m:r>
+              <m:sSup>
+                <m:sSupPr>
+                  <m:ctrlPr>
+                    <w:rPr xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+                      <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math" />
+                      <w:i />
+                    </w:rPr>
+                  </m:ctrlPr>
+                </m:sSupPr>
+                <m:e>
+                  <m:r>
+                    <w:rPr xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+                      <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math" />
+                      <w:lang w:val="en-US" />
+                    </w:rPr>
+                    <m:t>(</m:t>
+                  </m:r>
+                  <m:r>
+                    <w:rPr xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+                      <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math" />
+                    </w:rPr>
+                    <m:t>n</m:t>
+                  </m:r>
+                  <m:r>
+                    <w:rPr xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+                      <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math" />
+                      <w:lang w:val="en-US" />
+                    </w:rPr>
+                    <m:t>+1)</m:t>
+                  </m:r>
+                </m:e>
+                <m:sup>
+                  <m:r>
+                    <w:rPr xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+                      <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math" />
+                      <w:lang w:val="en-US" />
+                    </w:rPr>
+                    <m:t>2</m:t>
+                  </m:r>
+                </m:sup>
+              </m:sSup>
+            </m:num>
+            <m:den>
+              <m:r>
+                <w:rPr xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+                  <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math" />
+                  <w:lang w:val="en-US" />
+                </w:rPr>
+                <m:t>2</m:t>
+              </m:r>
+            </m:den>
+          </m:f>
+        </m:e>
+      </m:d>
+      <w:bookmarkEnd w:id="0" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" />
+    </m:e>
+    <m:sup>
+      <m:r>
+        <w:rPr xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+          <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math" />
+        </w:rPr>
+        <m:t>n</m:t>
+      </m:r>
+    </m:sup>
+  </m:sSup>
+  <m:r>
+    <w:rPr xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+      <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math" w:eastAsia="Cambria Math" w:cs="Cambria Math" />
+      <w:lang w:val="en-US" />
+    </w:rPr>
+    <m:t>=</m:t>
+  </m:r>
+  <w:bookmarkStart w:name="OLE_LINK1" w:id="1" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" />
+  <w:bookmarkStart w:name="OLE_LINK2" w:id="2" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" />
+  <m:nary>
+    <m:naryPr>
+      <m:chr m:val="?" />
+      <m:grow m:val="1" />
+      <m:ctrlPr>
+        <w:rPr xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+          <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math" />
+        </w:rPr>
+      </m:ctrlPr>
+    </m:naryPr>
+    <m:sub>
+      <m:r>
+        <w:rPr xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+          <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math" w:eastAsia="Cambria Math" w:cs="Cambria Math" />
+        </w:rPr>
+        <m:t>k</m:t>
+      </m:r>
+      <m:r>
+        <w:rPr xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+          <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math" w:eastAsia="Cambria Math" w:cs="Cambria Math" />
+          <w:lang w:val="en-US" />
+        </w:rPr>
+        <m:t>=0</m:t>
+      </m:r>
+    </m:sub>
+    <m:sup>
+      <m:r>
+        <w:rPr xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+          <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math" w:eastAsia="Cambria Math" w:cs="Cambria Math" />
+        </w:rPr>
+        <m:t>n</m:t>
+      </m:r>
+    </m:sup>
+    <m:e>
+      <m:sSup>
+        <m:sSupPr>
+          <m:ctrlPr>
+            <w:rPr xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+              <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math" />
+            </w:rPr>
+          </m:ctrlPr>
+        </m:sSupPr>
+        <m:e>
+          <m:r>
+            <w:rPr xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+              <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math" w:eastAsia="Cambria Math" w:cs="Cambria Math" />
+            </w:rPr>
+            <m:t>i</m:t>
+          </m:r>
+        </m:e>
+        <m:sup>
+          <m:r>
+            <w:rPr xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+              <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math" w:eastAsia="Cambria Math" w:cs="Cambria Math" />
+              <w:lang w:val="en-US" />
+            </w:rPr>
+            <m:t>3</m:t>
+          </m:r>
+        </m:sup>
+      </m:sSup>
+    </m:e>
+  </m:nary>
+</m:oMath>

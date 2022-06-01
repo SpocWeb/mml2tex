@@ -1,0 +1,32 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:mms="http://www.orcca.on.ca/MathML/Schema"
+        targetNamespace="http://www.orcca.on.ca/MathML/Schema"
+        elementFormDefault="qualified"
+        attributeFormDefault="qualified">
+
+ <annotation>
+  <documentation xml:lang="en">
+   Module name: MathML-Content.xsd
+   Size: 1.0 KB 
+   XML schema for top-level element 'math' for content MathML. 
+   The presentation elements are not included in the content 
+   models.
+   Copyright 2002 ORCCA. All rights reserved.
+  </documentation>
+ </annotation>
+
+ <include schemaLocation="http://www.orcca.on.ca/MathML/Schema/mathAtts.xsd"/> 
+ <include schemaLocation="http://www.orcca.on.ca/MathML/Schema/Meta-MathML-Content.xsd"/>
+
+ <complexType name="mathContentType">
+  <group ref="mms:ContInPres" minOccurs="0" maxOccurs="unbounded"/>
+  <attributeGroup ref="mms:topinfo"/>
+  <attributeGroup ref="mms:browif"/>
+ </complexType>
+
+ <element name="math" type="mms:mathContentType"/> 
+
+</schema>
+
+
+

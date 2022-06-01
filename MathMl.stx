@@ -1,0 +1,642 @@
+﻿MathMl	
+
+The Big Picture	
+	Presentation and Content	
+Think about trying to help a student with a math problem over the phone. Your first challenge is to make sure you are both talking about the same thing, and there are two natural approaches. You can say things like "use the chain rule to write down the derivative of f composed with g", or, if the student is really at sea, you can say "write f prime, open paren, g of x, close paren, g prime of x". The first method tries to communicate the sense or meaning, and leaves the notation up to the student. The second method tries to convey the notation, so that by looking at it, the student can grasp the sense.
+
+In MathML, these two styles of encoding are called content encodings and presentation encodings. Which kind of encoding is most appropriate for a given task will depend on the situation. MathML allows an author to use either kind of encoding, or mix them in a hybrid.
+
+There are 30 MathML presentation elements, with about 50 attributes. These elements are for encoding mathematical notation. Most elements represent templates or patterns for laying out subexpressions. For example, there is an mfrac element, which as you would expect, is used for forming a fraction from two expressions by putting one over the other with a line in between. Using presentation elements, you can precisely control how an expression will look when displayed in a browser, or printed on paper. Unfortunately, as with any layout-based mark-up language, it is all too easy to get it to look right, without taking care to get the underlying structure right. In some cases this won't matter, but it is less likely a badly encoded expression could be spoken properly by a voice synthesizer, evaluated in a computer algebra system, or used by other applications which need to know something of the sense of an expression, rather than just its appearance.
+
+For content markup, there are around 100 elements, with about a dozen attributes. Many of these elements come in families, and represent mathematical operations and functions, such as plus and sin. Others represent mathematical objects like set and vector. Content markup is intended for facilitating applications other than display, like computer algebra, and speech synthesis. As a consequence, when using content mark-up, it is harder to directly control how an expression will be displayed.
+
+	Expression Trees	
+If you look at a lot of math notation, you will soon notice that although there are a lot of math symbols, there are only a few ways of arranging them -- a row, subscript and superscripts, fractions, matrices and a few others. Of course, these notational patterns or schemata often appear nested inside one another, such as a square root of a fraction, and they generally have a number of parameters which depend on the context, such as the amount to shift a superscript for inline math vs. displayed math. The important point is that even complicated, nested expressions are built-up from a handful of simple schemata.
+
+MathML presentation elements encode the way an expression is built-up from of the nested layout schemata. The best way to understand how this works is to look at an example: 
+
+	 (a + b)2
+
+This expression naturally breaks into a "base," the (a + b), and a "script," which is the single character '2' in this case. The base decomposes further into a sequence of two characters and three symbols. Of course, the decomposition process terminates with indivisible expressions such as digits, letters, or other symbol characters.
+
+The MathML presentation encoding of this expression is:  
+	 <msup>
+	   <mfenced>
+		 <mi>a</mi>
+		 <mo>+</mo>
+		 <mi>b</mi>
+	   </mfenced>
+	   <mn>2</mn>
+	 </msup>
+
+The top-level structure is an expression with a superscript. This is encoded by the fact that the outermost tags in the MathML mark-up are the <msup> and </msup> tags. The mark-up in between the start tag and the end tag defines the base and the superscript.
+
+The first subexpression is an mfenced element, which displays its contents surrounded by parentheses. The second expression is the character 2, enclosed in <mn> tags, which tell a renderer to display it like a number. Similarly, the subexpressions contained in the mfenced element are all individual characters, wrapped in tags to indicate that they should be displayed as identifiers (<mi>) and operators (<mo>) respectively.
+
+Though we won't go into this until later, the content markup for the same example might be: 
+
+	<apply>
+	  <power/>
+	  <apply>
+		<plus/>
+		<ci>a</ci>
+		<ci>b</ci>
+	  </apply>
+	  <cn>2</cn>
+	</apply>
+
+As you see, content mark-up uses the same kind of syntax as presentation markup. Each layout schemata or content construction corresponds to a pair of start and end tags (except for so-called empty elements like <plus/>, which we will encounter later). The the mark-up for subexpressions is enclosed between the start and end tags, and the order they appear in determines what roles they play, e.g. the first child is the base and the second child is the superscript in an msup schema.
+
+As the indentation of the MathML examples suggests, it is natural to think about MathML expressions as tree structures. Each node in the tree corresponds to a particular layout schema, and its "branches" or child nodes correspond to its subexpressions.
+
+This abstract expression tree is a handy thing to have in the back of your mind. It also describes how the MathML tags should be nested to encode the expression, and how typesetting "boxes" should be nested on the screen to display the notation.
+
+Before we go on, and start getting into the details, let's review the main points from this section: 
+
+	Presentation mark-up is for describing math notation, and content mark-up is for describing mathematical objects and functions.
+	In presentation mark-up, expressions are built-up using layout schemata, which tell how to arrange their subexpressions, e.g. as a fraction or a superscript.
+	The way the MathML layout schemata are nested together is naturally described by an expression tree, where each node represents a particular schema, and its branches represent its subexpressions. 
+
+Boxes, Boxes, and More Boxes	
+	Layout Boxes	
+
+MathML presentation mark-up is based around the idea of a layout box. You can think of a layout box as a sort of abstract bounding box for a particular kind of mathematical notation. Layout boxes naturally fall into categories based on their contents. Simple layout boxes just contain individual characters, and their dimensions depend only on the font being used. More complicated layout boxes arrange their "child boxes" according to some algorithm. For example, a fraction box arranges two child boxes to be vertically stacked with a line between, and centered horizontally.
+
+For these cases, the actual dimensions of a layout box depend recursively on the sizes of the child boxes.
+
+If you think about trying to typeset a mathematical expression by hand, it is clear why layout boxes are a good idea. The first time you typeset a fraction, you have to work out the algorithm for computing the horizontal and vertical positions for the numerator and denominator expressions. Once that is done, you can teach it to your assistant, and he or she can do all the calculation without knowing anything but the dimensions of the subexpressions. 
+
+MathML presentation elements represent abstract typesetting layout boxes. Roughly speaking, presentation elements correspond to the media-independent aspects of a typesetting layout box. This abstraction is what we were calling layout schemata in The Big Picture.
+
+Each element corresponds to a layout schemata that describes how its children schemata are logically related to each other. A renderer then turns these logical relations into specific algorithms for physically laying out equations on the screen. The attributes of an element essentially specify parameters to the layout algorithm.
+
+As an example, again consider the mfrac element. The mfrac element represents a fraction layout schema, which expect two children schemata for the numerator and denominator. There is only one mfrac attribute "linethickness" which specifies the thickness of the fraction line. The actual fraction algorithm a render like may be substantially more complicated, depending on how hard it tries to optimize the appearance of a fraction in unusual situations. But from the point of view of a MathML author, all of this complexity is hidden by a layer of logical abstraction. Provided the author has taken care to get the logical structure correct, he or she should be able to leave the rest to the renderer.
+	Tokens and Basic Layout Schemata	
+
+The most common MathML presentation elements are the token elements <mi>, <mn> and <mo>. Recall that token elements are the only elements which directly contain character data, so each individual identifier, operator, and number that appears in an expression must be wrapped in a token element.
+
+		<mi> ... </mi>	
+	 
+	{b mi} elements indicate that their contents should be displayed as {b identifiers}. This means that single character identifiers like 'x' and 'h' should appear in italics, while multi-character identifiers like 'sin' and 'log' should be in an upright font.
+
+	Attributes include font properties like fontweight, fontfamily and fontstyle as well as general properties like color.
+ 
+		<mn> ... </mn>	
+	 
+	{b mn} elements indicate that their contents should be rendered as {b numbers}, which generally means in an upright font.
+
+	Attributes are like those for mi. 
+ 
+		<mo> ... </mo>	
+	 
+	{b mo} elements are the most complex token schema. The indicate that their contents should be displayed as {b operators}, but how operators are displayed is often quite complicated. For example, the spacing around operators varies depending on the operator. Other operators like sums and products have special conventions for displaying limits as scripts. Still other operators like vertical rules stretch to match the size of the expression which they enclose.
+
+	In MathML, renderering software is expected to contain an "operator dictionary" which contains information about how different operators are conventionally rendered. However, {b everything about how an operator should be displayed can be controlled directly by using attributes}. Attributes include properties like lspace, rspace, stretchy, and movablelimits.
+
+	The mo element is also used to mark-up other symbols which are only operators in a very general sense, but whose layout properties are like those of an operator. Thus, {b mo elements are used to mark-up delimiter characters like parentheses (which stretch), punctuation (which has uneven spacing around it) and accents (which also stretch)}. One can use attributes to indicate that the contents of an mo should be treated as one of these related types. 
+
+Now that we are acquainted with a few token elements for marking up individual characters and symbols, we need some layout schemata for arranging tokens into expressions. The most common and important general purpose layout schema is the mrow element. The following list describes mrow and some other common elements in more detail: 
+
+		<mrow> child1 ... </mrow>	
+	 
+	The mrow element can contain any number of child elements, which it displays aligned along the baseline in a horizontal row. However, in addition to positioning schemata in a row, the mrow is very handy for grouping together terms into a single unit. One might do this in order to make a collection of expressions into a single subscript, or one might nest some terms in an mrow to limit how much a stretchy operator grows, and so on. 
+ 
+		<mfrac> numerator denominator </mfrac>	
+	 
+	The mfrac element expects {b exactly two children}, the first of which will be positioned as the numerator of a fraction, and the second will be the denominator. By setting the linethickness attribute to 0, the mfrac element can also be used for binomial coefficients. 
+ 
+	<msqrt> child1 ... </msqrt>	
+	 
+	The msqrt element accepts any number of children, and displays them under a radical sign. 
+ 
+	<mroot> base index</mroot>	
+	 
+	The mroot element is nearly identical to the msqrt element, except it expects a second child, which is displayed above the radical in the location of the n in an nth root. 
+ 
+	<mfenced> child ... </mfenced>	
+	 
+	The mfenced element is like an mrow, except that it displays enclosed in parentheses. Using attributes, one can set the beginning and ending delimiter character, as well as internal separator characters like commas. 
+ 
+	<mstyle> child ... </mstyle>	
+	 
+	The mstyle element is also like an mrow except that it handles attributes differently. The mrow element has almost no attributes of its own, while the mstyle elements can be used to set any MathML attribute. Just exactly how this works is described in the next section on inheritance. 
+
+Inheritance	
+
+Attributes make MathML very flexible, but to use them effectively, you need to understand how attributes are inherited. Attribute values are basically set in three ways: they {b can be explicitly set in a tag, they can be looked up in the operator dictionary, or they can be inherited from the environment.}
+
+Behind the scenes, each element has an environment that specifies default values for all MathML attributes. Ideally, the environment is initialized by a browser with sensible values for attributes like color, background, displaystyle and the font related attributes. Each child element "inherits" its parent's environment. If an attribute value is not looked up or otherwise computed, or set directly on the tag, the attribute value is inherited from the environment.
+
+An important point for understanding inheritance is that ordinarily values directly set in a tag do not change the default value in the environment. They only affect the element on which they are set. To change the environment for an element, and hence for all children of that element, one must use the mstyle element.
+
+Any presentation attribute can be set using the mstyle element. Values which are set in this way are inherited by all of the mstyle's children elements. In other words, attributes set with mstyle are in effect for all elements within the scope of the mstyle.
+Examples	
+Now that we have met some of the key players, it is time to see what we can do. Here are some examples and comments which illustrate the use of the basic layout and token elements. Consider the expression x2 + 4x + 4 = 0. A basic MathML presentation encoding for this would be: 
+
+<mrow>
+  <msup>
+	<mi>x</mi>
+	<mn>2</mn>
+  </msup>
+  <mo>+</mo>
+  <mn>4</mn>
+  <mi>x</mi>
+  <mo>+</mo>
+  <mn>4</mn>
+  <mo>=</mo>
+  <mn>0</mn>
+</mrow>
+
+This encoding will display as you would expect. However, if we were interested in reusing this expression in unknown situations, we would likely want to spend a little more effort analyzing and encoding the logical expression structure.
+
+For starters, our example is more than just one long horizontal row of symbols. The row naturally breaks up into groups corresponding the the mathematical terms in the expression, like x2 and the 4x. Grouping symbols into terms typically won't affect much about the display, except perhaps linebreaking, but it makes a bigger difference to a computer algebra system trying to heuristically figure out what the notation means. Thus a more thorough encoding might look like this: 
+
+<mrow>
+  <mrow>
+	<msup>
+	  <mi>x</mi>
+	  <mn>2</mn>
+	</msup>
+	<mo>+</mo>
+	<mrow>
+	  <mn>4</mn>
+	  <mi>x</mi>
+	</mrow>
+	<mo>+</mo>
+	<mn>4</mn>
+  </mrow>
+  <mo>=</mo>
+  <mn>0</mn>
+</mrow>
+
+This example shows the use of the mfenced element to encode the expression f(x + y): 
+
+<mrow>
+  <mi>f</mi>
+  <mfenced>
+	 <mrow>
+	 <mi>x</mi>
+	 <mo>+</mo>
+	 <mi>y</mi>
+	 </mrow>
+  </mfenced>
+</mrow>
+
+By adding an mstyle element, we can set the color of the function argument, so that the expression f(x + y) will appear in red: 
+
+<mrow>
+  <mi>f</mi>
+  <mfenced>
+	 <mstyle color='#ff0000'>
+	   <mrow>
+	   <mi>x</mi>
+	   <mo>+</mo>
+	   <mi>y</mi>
+	   </mrow>
+	 </mstyle>
+  </mfenced>
+</mrow>
+
+Here is a sample encoding showing the use of the mroot and mfrac elements to encode
+
+cube root of 1 - x/2
+
+<mroot>
+  <mrow>
+	<mn>1</mn>
+	<mo>-</mo>
+	<mfrac>
+	  <mi>x</mi>
+	  <mn>2</mn>
+	</mfrac>
+  </mrow>
+  <mn>3</mn>
+</mroot>
+
+	quadratic formula:
+Finally, lets look at a more substantial example, like the quadratic formula: 
+
+x = (-b +- sqrt(b^2 - 4ac)) / 2a
+
+A very careful encoding might look like this: 
+
+		Markup:
+
+<mrow>
+  <mi>x</mi>
+  <mo>=</mo>
+  <mfrac>
+	<mrow>
+	  <mrow>
+		<mo>-</mo>
+		<mi>b</mi>
+	  </mrow>
+	  <mo>&PlusMinus;</mo>
+	  <msqrt>
+		<mrow>
+		  <msup>
+			<mi>b</mi>
+			<mn>2</mn>
+		  </msup>
+		  <mo>-</mo>
+		  <mrow>
+			<mn>4</mn>
+			<mo>&InvisibleTimes;</mo>
+			<mi>a</mi>
+			<mo>&InvisibleTimes;</mo>
+			<mi>c</mi>
+		  </mrow>
+		</mrow>
+	  </msqrt>
+	</mrow>
+	<mrow>
+	  <mn>2</mn>
+	  <mo>&InvisibleTimes;</mo>
+	  <mi>a</mi>
+	</mrow>
+  </mfrac>
+</mrow>
+
+Notice that the plus/minus sign is given by a special named entity &PlusMinus;. Also, notice that another named entity &InvisibleTimes; has also been inserted. This entity doesn't display in print, but here we have added it to facilitate voice synthesis and heuristic evaluation by computer algebra systems. Whether or not you want to go to the trouble of adding extra grouping and invisible characters will depend on the purpose of your document, and what audience you want to reach.
+
+Script Schemata	
+
+Superscripts and subscripts are ubiquitous in mathematical notation, and MathML contains seven layout elements for different kinds and combinations of scripts. Here are brief descriptions: 
+
+	<msub> base script </msub>	
+	<msup> base script </msup>	
+	 
+	The msub and msup elements expect two children, which are displayed as a base, and a sub- or superscript. 
+ 
+	<msubsup> base subscript superscript </msubsup>	
+	 
+	This element puts both a subscript and a superscript on the same base. This is usually preferable to first attaching one and then the other with the msub and msup elements individually, since then the scripts are not vertically aligned.
+
+	  
+	<munder> base script </munder>	
+	<mover> base script </mover>	
+	 
+	The munder and mover elements expect two children, which are displayed as a base, and a under- or overscript. A common use of these schemata are to attach accents like bars and tildes to a base. However, since accents are typeset closer to the base than other expressions, it is necessary to set the accent or accentunder attributes to "true" in this case.
+ 
+	<munderover> base underscript overscript </munderover>	
+	 
+	This element attaches both an under- and and overscript on a base. This is particularly useful for positioning limits around a summation sign or similar large operator. The operator dictionary typically sets the movablelimits attribute to "true" on mo elements which contain these large operators. Renderers use this attribute to determine whether munderover should display the limits as under- and overscripts or normal sub- and superscripts. By default, limits are displayed above and below when an expression is displayed by itself, and in the sub/super script positions when the expression is in a line of text. 
+ 
+	<mmultiscripts> base sub1 sup1 ... [<mprescripts/> psub1 psup1 ...] </mmultiscripts>	
+	 
+	This element is used to place tensor indicies around a base expression. If you don't already know what tensor indicies are, the basic idea is that the mmultiscripts element can be used to put multiple columns of scripts on a base. It can even attach columns of "prescripts" to a base. 
+
+	Examples	
+We begin with a somewhat artificial example which shows the difference between nested msub and msup elements and a single msubsup: 
+
+<mrow>
+  <msup>
+	<msub>
+	  <mi>x</mi>
+	  <mn>1</mn>
+	</msub>
+	<mi>&alpha;</mi>
+  </msup>
+  <mo>+</mo>
+  <msubsup>
+	<mi>x</mi>
+	<mn>1</mn>
+	<mi>&alpha;</mi>
+  </msubsup>
+</mrow>
+
+Our second example shows how one can control movable limits on large operators, using an mstyle construction: 
+
+<mrow>
+  <mstyle displaystyle='true'>
+	<munderover>
+	  <mo>sum</mo>
+	  <mrow>
+		<mi>i</mi>
+		<mo>=</mo>
+		<mn>1</mn>
+	  </mrow>
+	  <mi>&infty;</mi>
+	</munderover>
+	<msup>
+	  <mi>x</mi>
+	  <mi>i</mi>
+	</msup>
+  </mstyle>
+  <mo>+</mo>
+  <mstyle displaystyle='false'>
+	<munderover>
+	  <mo>sum</mo>
+	  <mrow>
+		<mi>i</mi>
+		<mo>=</mo>
+		<mn>1</mn>
+	  </mrow>
+	  <mi>&infty;</mi>
+	</munderover>
+	<msup>
+	  <mi>x</mi>
+	  <mi>i</mi>
+	</msup>
+  </mstyle>
+</mrow>
+
+A final example illustrates the use of the accent attribute: 
+
+<mrow>
+  <mover>
+	<mi>G</mi>
+	<mo>&hat;</mo>
+  </mover>
+  <mo>+</mo>
+  <mover accent='true'>
+	<mi>G</mi>
+	<mo>&hat;</mo>
+  </mover>
+  <mo>+</mo>
+  <mover accent='false'>
+	<mi>G</mi>
+	<mo>&hat;</mo>
+  </mover>
+</mrow>
+
+Tables	
+
+MathML tables are a lot like HTML tables, except they have substantially more attributes for controlling math-specific layout behaviors. Although the attributes can get complicated, the basic usage is simple; a mtable element contains any number of mtr table row elements, and mtr elements contain any number of mtd table data cells.
+
+	<mtable> row1 ... </mtable>	
+	 
+	The mtable element accepts a number of attributes for controling how that table is laid out. The rowalign and columnalign attributes can be used to determine how the entries in rows and columns should be aligned, e.g. "center", "left", "top", etc. The rowlines, columnlines and frame attributes can be used to draw separator lines. rowspacing, columnspacing, equalrows, and equalcolumns determine the spacing between rows and columns. 
+ 
+	<mtr> cell1 ... </mtr>	
+	 
+	The attributes of the mtr element are basically the same as the row related attributes of mtable, but they only apply to that specific row and not the whole table. 
+ 
+	<mtd> child1 ... </mtd>	
+	 
+	The mtd element accepts a number of the table attributes, just like the mtr element, which can be used to over-ride values for one cell. It also has two special attributes, rowspan and columnspan, which can be used to make one cell span several rows or columns. This is very useful for table headings. 
+
+	Examples	
+Here is the markup for a simple matrix: 
+
+<mrow>
+  <mi>A</mi>
+  <mo>=</mo>
+  <mfenced open='['; close=']'>
+	<mtable>
+	  <mtr>
+		 <mtd><mi>x</mi></mtd>
+		 <mtd><mi>y</mi></mtd>
+	  </mtr>
+	  <mtr>
+		 <mtd><mi>z</mi></mtd>
+		 <mtd><mi>w</mi></mtd>
+	  </mtr>
+	</mtable>
+  </mfenced>
+</mrow>
+
+This section contains a lot of information to absorb. Remember the highlights: 
+
+	Presentation elements can be thought of as abstractions of typesetting layout boxes. Each element represents a sort of "smart template" for laying out subexpressions in a certain way, such as a fraction or a row.
+	All character data (including entity references) must be wrapped in a token element, such as mi, mn, and mo, which determines how it will display.
+	In addition to a number of general layout elements like mrow and msqrt, there are families of elements for handling scripts and tables.
+	The are many attributes which can be used with presentation elements. Default values are inherited from parent element to child element. Attributes set directly in an element's begin tag override inherited values. The defaults can be modified by using the mstyle element. 
+
+Content mark-up: Containers and Operators	
+	Prefix Notation	
+
+Computer languages typically employ either prefix, infix, or postfix notation to capture the idea of applying an operator to arguments. For example, Postscript and Hewlett-Packard calculators use postfix notation. Most programing languages and computer algebra systems use the infix notation we are accustomed to seeing in print. However, the computer language LISP uses prefix notation, which also corresponds more closely to many natural language constructions like "f of x" and "subtract 5 from 8". For this and other reasons, MathML content mark-up also uses prefix notation.
+
+A pleasant consequence of using prefix notation is that parentheses are no longer necessary. Using infix notation, we must use parentheses to distinguish (x - y) / 2 from x - (y / 2). However, in MathML, the order of operations is clear from the prefix notation, so parentheses aren't necessary.
+
+<apply>						  <apply>
+  <divide/>						<minus/>
+  <apply>						  <ci>x</ci>
+	<minus/>					   <apply>
+	<ci>x</ci>		 vs.		   <divide/>
+	<ci>y</ci>					   <ci>y</ci>
+  </apply>						   <cn>2</cn>
+  <cn>2</cn>					   </apply>
+</apply>						 </apply>
+
+This example also introduces the fundamental apply element. The huge majority of content elements represent either operators or mathematical data types, and it is the apply element's job to group operators with arguments. The apply element expects an operator schema as it first child, and interprets the remaining children as the arguments of that operator.
+
+Most MathML operators and functions are represented by empty elements like <cos/> and <intersect/>. However, expressions such as <apply><compose/><ci>f</ci><ci>g</ci></apply> can also be used as operators.
+
+The examples also illustrate the use of content mark-up's only token elements, ci and cn. These elements represent identifiers and numbers, respectively. Since functions and operators are represented by elements, no "co" element is needed. However there is a csymbol token for less-common symbols and operators with a well-defined mathematical usage, but for which there are no pre-defined content MathML elements.
+
+In MathML, an identifier is any kind of name or label. In content mark-up, this usually means things such as variables and function names. A type attribute on the ci element can be used to specify the type of object which an identifier represents.
+
+The cn element is primarily designed to mark-up integers, rational, real or complex numbers. However, any kind of character data is permitted in the cn tag, so it is possible to mark-up expressions like <cn>xii</cn>. The type attribute specifies what kind of number the element encodes. Similarly, the base attribute can be used to specify that the encoding is to a base other than 10, such as octal or hexadecimal.
+
+	Containers	
+
+Token elements represent identifiers and numbers. Of course, an identifier can refer to any kind of mathematical object, but in the case of common objects like vectors and sets, it would be nice to directly encode the structure of the object as well as its name. For this, new elements are needed to represent other kinds of mathematical objects and data types.
+
+MathML uses container elements to represent basic mathematical objects and data types. In general, container elements represent things like sets which are constructed out of other data. The main examples are sets, intervals, vectors, and matrices.
+
+<set> [<elt1> <elt2> ... | <condition>] </set>
+	 
+	The set element constructs a mathematical set whose elements are specified by the set element's children. This can be done in two ways. The children can either be a list of tokens and containers which represent the individual elements of the set, or the set elements can be specified by a single condition child element. The condition element is discussed below, and encodes expressions like "all x such that x < 2". 
+ 
+<interval> <pt1> <pt2> </interval>
+	 
+	Intervals in the real line can be specified with the interval element. It expects exactly two children elements, which encode the end points. The closure attribute determines which of the end points lie in the interval, and can have the values "open", "closed", "open-closed" and "closed-open". The default is closed. 
+ 
+<vector> <elt1> <elt2> ... </vector>
+	 
+	A vector element constructs a vector whose components are given in order by its children. By convention, in MathML vectors are column vectors for matrix multiplication. ⣀̈s >̈̈ <"̈ "
+ 
+<matrix> <row1> <row2> ... </matrix>
+	 
+	Matrices actually require two elements, matrix and matrixrow. Although matrix rows are a little odd to single out from a mathematical viewpoint, they are necessary crutch for encoding matrices. A matrix element expects any number of children, but they have to all be matrixrow elements. The children of the matrixrow elements represent the individual entries in the matrix. All matrix rows should have the same number of elements. 
+
+Examples:
+
+	Expression:
+	
+		Markup:
+
+<reln> <eq/>
+  <set>
+	<bvar>  <ci>x</ci>  </bvar>
+	<condition>
+	  <reln> <geq/><ci>x</ci><cn>0</cn>   </reln>
+	</condition>
+  </set>
+
+  <interval closure='closed-open'>
+	<cn>0</cn>
+	<ci>&infty;</ci>
+  </interval>
+</reln>
+
+	Expression:
+	
+		Markup:
+
+<reln> <eq/>
+  <apply><times/>
+	<vector> <cn>1 </cn> <cn>2 </cn>
+	</vector>
+
+	<matrix>
+	<matrixrow> <cn>0 </cn> <cn>1 </cn> </matrixrow>
+	<matrixrow> <cn>1 </cn> <cn>0 </cn> </matrixrow>
+	</matrix>
+  </apply>
+
+  <apply> <transpose/>
+	<vector> <cn>2 </cn> <cn>1 </cn>
+	</vector>
+  </apply>
+</reln>
+
+Operators, Functions and Relations	
+
+There are about 90 empty operator elements in content markup, which represent commonly-used functions and operators. They are grouped into broad categories: arthimetic, algebra, logic, calculus, set theory, and so on. To see the full list, take a look at the summary of Content Elements.
+
+Recall that because of MathML's prefix notation, there is basically no difference between functions and operators; in common usage, we tend to call operators which are traditionally written with prefix notation "functions," like sin x. But from the point of view of MathML, they are both operators which may be applied to arguments.
+
+	Expression:
+	
+		Markup:
+
+<apply><plus/>
+  <apply><sin/><ci>x</ci></apply>
+  <cn>9</cn>
+</apply>
+
+Note that the parentheses around the x do not explicitly appear in the MathML mark-up; a renderer like WebEQ would typically use some kind of heuristic for deciding when parentheses are visually appropriate, but they are superfluous from the point of view of capturing the meaning of the expression.
+
+Operators and functions are both applied to arguments using the apply element. MathML does single out relations from other functions and operators, even though they could be viewed a functions which return truth values. Examples of relations are eq, leq, and subset. They are applied to arguments using the reln element much as operators are applied to arguments using the apply element.
+
+	Expression:
+
+		Markup:
+
+<reln> <eq/>
+  <ci>x</ci>
+  <cn>1</cn>
+</reln>
+
+ 
+Qualifiers:
+
+A handful of operators are meant to be used in conjunction with qualifier elements. For example, qualifier elements are used to specify the limits for the integral operator.
+
+The most obvious group of qualifier elements are those used with the int, sum, and prod elements. All three of these operators have a notion of a lower limit, an upper limit, and a bound variable. In MathML, qualifiers are used to specify these additional parameters, as is illustrated in this example: 
+
+	Expression:
+
+		Markup:
+
+<apply><sum/>
+  <bvar>	 <ci>n</ci>	   </bvar>
+  <lowlimit> <cn>0</cn>	   </lowlimit>
+  <uplimit>  <ci>&infty;</ci> </uplimit>
+  <apply><power/>
+	<ci>x</ci>
+	<ci>n</ci>
+  </apply>
+</apply>
+
+Another important idiom involving qualifiers comes up with the differential operators diff and partialdiff. The order of a derivate can be specified using the degree element together with a bvar: 
+
+	Expression:
+
+		Markup:
+
+<apply><diff/>
+   <bvar>   
+	 <ci>x</ci> 
+	 <degree> <cn>3</cn> </degree>
+   </bvar>
+   <apply><fn> f </fn>
+	 <ci> x </ci>
+   </apply>
+</apply>
+
+Qualifier elements are examples of MathML idioms. Math is full of examples of specialized and exceptional notation. Here and there, MathML has had to adopt a few specialized constructions, like qualifiers, to deal with them.
+
+One such idiom is the use of the condition element to specify the elements of a set: 
+
+	Expression:
+
+		Markup:
+
+<set>
+  <bvar>  <ci>x</ci>  </bvar>
+  <bvar>  <ci>y</ci>  </bvar>
+  <condition>
+	<apply>  <and/>
+	  <reln>  <lt/> <ci>0</ci> <ci>x</ci> <ci>1</ci>   </reln>
+	  <reln>  <leq/><ci>3</ci> <ci>y</ci> <ci>10</ci>  </e>
+	</apply>
+  </condition>
+</set>
+
+Some other less common idioms involve using lambda expressions in function declarations, and using quantifiers with log and limit.
+The semantics element
+
+The last important thing we need to look at is the semantics element. Content mark-up has two drawbacks: it doesn't include everything you might need, and it doesn't always display the way you would like. The semantics element addresses both of these problems.
+
+When you use content markup, you have to trust a renderer like WebEQ to put your expression on the screen in a reasonable way. Inevitably, this causes problems -- you want to use prime notation for derivatives, like f'(x), while WebEQ renders this as df/dx, and so on.
+
+To remedy this, you can use the semantics element to specify both the presentation mark-up and content mark-up for an expression separately.
+
+	Expression:
+
+<semantics>
+
+<mrow>
+  <msup> <mi>f</mi> <mi>′</mi> </msup>
+  <mi>(</mi> <mi>x</mi> <mi>)</mi>
+</mrow>
+
+<apply>  <diff/>
+  <ci>f</ci>
+  <bvar><ci>x</ci></bvar>
+</apply>
+
+</semantics>
+
+It is also possible to use the semantics tag to extend MathML. The special annotation element can serve as a wrapper for any kind of semantic information, such as computer algebra input or links to other references. By binding an annotation together with a MathML expression, one can send additional information along for the ride, and specialized renderers that understand it can take advantage of it.
+
+	Expression:
+
+<semantics>
+<set>
+  <bvar>  <ci>x</ci>  </bvar>  
+  <bvar>  <ci>y</ci>  </bvar>  
+  <bvar>  <ci>z</ci>  </bvar>  
+  <condition>
+   <reln> <eq/>
+	<apply> <plus/>
+	  <apply> <power/> <ci>x</ci> <ci>2</ci> </apply>
+	  <apply> <power/> <ci>y</ci> <ci>2</ci> </apply>
+	  <apply> <power/> <ci>z</ci> <ci>2</ci> </apply>
+	</apply>
+	<cn>1</cn>
+   </reln>
+</condition>
+</set>
+
+<annotation encoding='oogl'>
+SPHERE
+1
+0 0 0
+</annotation>
+
+</semantics>
+
+The "oogl" annotation in the example above allows an application that uses the Object Oriented Graphics Library to draw a three-dimensional representation of the surface described by the equation, a sphere with radius one centered at the origin.
+
+Here are the main points from this section:
+
+	MathML content markup uses a prefix notation style. Operators are applied to arguments using the apply element. There are many predefined operator elements like sin, and you can create user-defined operators and functions with the fn element.
+	Mathematical objects and data types are represented by token elements ci and cn, or by container elements like set.
+	There are a number of MathML idioms to handle special cases, like the use of qualifier schema such as lowlimit with the int operator,
+	You can use the semantics element to specify both presentation mark-up for display, and content mark-up for evaluation. 
+

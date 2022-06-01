@@ -1,0 +1,245 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:mms="http://www.orcca.on.ca/MathML/Schema"
+        targetNamespace="http://www.orcca.on.ca/MathML/Schema"
+        elementFormDefault="qualified"
+        attributeFormDefault="qualified">
+
+ <annotation>
+  <documentation xml:lang="en">
+   Module name: low-levelContent.xsd 
+   Size: 8.7 KB
+   XML schema for empty content elements in MathML.
+   Copyright 2002 ORCCA. All rights reserved.
+  </documentation>
+ </annotation>
+
+ <include schemaLocation="http://www.orcca.on.ca/MathML/Schema/MathMLCommonAtts.xsd"/>
+
+ <!-- global attribute declaration -->
+ <attribute name="base" type="string" default="10"/>
+ <attribute name="closure" type="string" default="closed"/>
+ <attribute name="definitionURL" type="string" default=""/>
+ <attribute name="encoding" type="string" default=""/>
+ <attribute name="nargs" type="string" default="1"/>
+ <attribute name="occurrence" type="string" default="function-model"/>
+ <attribute name="order" type="string" default="numeric"/>
+ <attribute name="scope" type="string" default="local"/>
+ <attribute name="type" type="string"/>
+ 
+ <element name="sep">
+  <complexType>
+   <attributeGroup ref="mms:MATHML.xmlns.attrib"/>
+  </complexType>
+ </element>
+
+ <complexType name="contentBaseType">
+  <attributeGroup ref="mms:MATHML.Common.attrib"/>
+  <attribute ref="mms:definitionURL"/>
+  <attribute ref="mms:encoding"/>
+ </complexType>
+
+ <element name="compose" type="mms:contentBaseType"/>
+
+ <!-- Content elements: symbols  "c0ary"-->
+ <element name="integers" type="mms:contentBaseType"/>
+ <element name="reals" type="mms:contentBaseType"/>
+ <element name="rationals" type="mms:contentBaseType"/>
+ <element name="naturalnumbers" type="mms:contentBaseType"/>
+ <element name="complexes" type="mms:contentBaseType"/>
+ <element name="primes" type="mms:contentBaseType"/>
+ <element name="exponentiale" type="mms:contentBaseType"/>
+ <element name="imaginaryi" type="mms:contentBaseType"/>
+ <element name="notanumber" type="mms:contentBaseType"/>
+ <element name="true" type="mms:contentBaseType"/>
+ <element name="false" type="mms:contentBaseType"/>
+ <element name="emptyset" type="mms:contentBaseType"/>
+ <element name="pi" type="mms:contentBaseType"/>
+ <element name="eulergamma" type="mms:contentBaseType"/>
+ <element name="infinity" type="mms:contentBaseType"/>
+
+ <!-- Content elements: operators  "cfuncop1ary"-->
+ <element name="inverse" type="mms:contentBaseType"/>
+ <element name="ident" type="mms:contentBaseType"/>
+ <element name="domain" type="mms:contentBaseType"/>
+ <element name="codomain" type="mms:contentBaseType"/>
+ <element name="image" type="mms:contentBaseType"/> 
+
+ <!-- "carithop1ary" -->
+ <element name="abs" type="mms:contentBaseType"/>
+ <element name="conjugate" type="mms:contentBaseType"/>
+ <element name="exp" type="mms:contentBaseType"/>
+ <element name="factorial" type="mms:contentBaseType"/>
+ <element name="arg" type="mms:contentBaseType"/>
+ <element name="real" type="mms:contentBaseType"/>
+ <element name="imaginary" type="mms:contentBaseType"/>
+ <element name="floor" type="mms:contentBaseType"/>
+ <element name="ceiling" type="mms:contentBaseType"/>
+
+ <!-- "carithop1or2ary" -->
+ <element name="minus" type="mms:contentBaseType"/>
+
+ <!-- "carithop2ary" -->
+ <element name="quotient" type="mms:contentBaseType"/>
+ <element name="divide" type="mms:contentBaseType"/>
+ <element name="power" type="mms:contentBaseType"/>
+ <element name="rem" type="mms:contentBaseType"/>
+
+ <!-- "carithopnary" -->
+ <element name="plus" type="mms:contentBaseType"/>
+ <element name="times" type="mms:contentBaseType"/>
+ <element name="max" type="mms:contentBaseType"/>
+ <element name="min" type="mms:contentBaseType"/>
+ <element name="gcd" type="mms:contentBaseType"/>
+ <element name="lcm" type="mms:contentBaseType"/>
+ 
+ <!-- "carithoproot" -->
+ <element name="root" type="mms:contentBaseType"/>
+
+ <!-- "clogicopquant" -->
+ <element name="exists" type="mms:contentBaseType"/>
+ <element name="forall" type="mms:contentBaseType"/>
+
+ <!-- "clogicopnary" -->
+ <element name="and" type="mms:contentBaseType"/>
+ <element name="or" type="mms:contentBaseType"/>
+ <element name="xor" type="mms:contentBaseType"/>
+
+ <!-- "clogicop1ary" -->
+ <element name="not" type="mms:contentBaseType"/>
+
+ <!-- "clogicop2ary" -->
+ <element name="implies" type="mms:contentBaseType"/>
+
+ <!-- "ccalcop" -->
+ <element name="log" type="mms:contentBaseType"/>
+ <element name="int" type="mms:contentBaseType"/>
+ <element name="diff" type="mms:contentBaseType"/>
+ <element name="partialdiff" type="mms:contentBaseType"/>
+ <element name="divergence" type="mms:contentBaseType"/>
+ <element name="grad" type="mms:contentBaseType"/>
+ <element name="curl" type="mms:contentBaseType"/>
+ <element name="laplacian" type="mms:contentBaseType"/>
+
+ <!-- "ccalcop1ary" -->
+ <element name="ln" type="mms:contentBaseType"/>
+ 
+ <!-- "csetop1ary" -->
+ <element name="card" type="mms:contentBaseType"/>
+
+ <!-- "csetop2ary" -->
+ <element name="setdiff" type="mms:contentBaseType"/>
+
+ <!-- "csetopnary" -->
+ <element name="union" type="mms:contentBaseType"/>
+ <element name="intersect" type="mms:contentBaseType"/>
+ <element name="cartesianproduct" type="mms:contentBaseType"/>
+
+ <!-- "cseqop" -->
+ <element name="sum" type="mms:contentBaseType"/>
+ <element name="product" type="mms:contentBaseType"/>
+ <element name="limit" type="mms:contentBaseType"/>
+
+ <!-- "ctrigop" -->
+ <element name="sin" type="mms:contentBaseType"/>
+ <element name="cos" type="mms:contentBaseType"/>
+ <element name="tan" type="mms:contentBaseType"/>
+ <element name="sec" type="mms:contentBaseType"/>
+ <element name="csc" type="mms:contentBaseType"/>
+ <element name="cot" type="mms:contentBaseType"/>
+ <element name="sinh" type="mms:contentBaseType"/>
+ <element name="cosh" type="mms:contentBaseType"/>
+ <element name="tanh" type="mms:contentBaseType"/>
+ <element name="sech" type="mms:contentBaseType"/>
+ <element name="csch" type="mms:contentBaseType"/>
+ <element name="coth" type="mms:contentBaseType"/>
+ <element name="arcsin" type="mms:contentBaseType"/>
+ <element name="arccos" type="mms:contentBaseType"/>
+ <element name="arctan" type="mms:contentBaseType"/>
+ <element name="arccosh" type="mms:contentBaseType"/>
+ <element name="arccot" type="mms:contentBaseType"/>
+ <element name="arccoth" type="mms:contentBaseType"/>
+ <element name="arccsc" type="mms:contentBaseType"/>
+ <element name="arccsch" type="mms:contentBaseType"/>
+ <element name="arcsec" type="mms:contentBaseType"/>
+ <element name="arcsech" type="mms:contentBaseType"/>
+ <element name="arcsinh" type="mms:contentBaseType"/>
+ <element name="arctanh" type="mms:contentBaseType"/>
+
+ <!-- "cstatopnary" -->
+ <element name="mean" type="mms:contentBaseType"/>
+ <element name="sdev" type="mms:contentBaseType"/>
+ <element name="variance" type="mms:contentBaseType"/>
+ <element name="median" type="mms:contentBaseType"/>
+ <element name="mode" type="mms:contentBaseType"/>
+
+ <!-- "cstatopmoment" -->
+ <element name="moment" type="mms:contentBaseType"/>
+
+ <!-- "clalgop1ary" -->
+ <element name="determinant" type="mms:contentBaseType"/>
+ <element name="transpose" type="mms:contentBaseType"/>
+
+ <!-- "clalgop2ary" -->
+ <element name="vectorproduct" type="mms:contentBaseType"/>
+ <element name="scalarproduct" type="mms:contentBaseType"/>
+ <element name="outerproduct" type="mms:contentBaseType"/>
+
+ <!-- "clalgopnary" -->
+ <element name="selector" type="mms:contentBaseType"/>
+
+ <!-- Content elements: relations -->
+
+ <!-- "cgenrel2ary" -->
+ <element name="neq" type="mms:contentBaseType"/>
+ <element name="factorof" type="mms:contentBaseType"/>
+
+ <!-- "cgenrelnary" -->
+ <element name="eq" type="mms:contentBaseType"/>
+ <element name="leq" type="mms:contentBaseType"/>
+ <element name="lt" type="mms:contentBaseType"/>
+ <element name="geq" type="mms:contentBaseType"/>
+ <element name="gt" type="mms:contentBaseType"/>
+ <element name="equivalent" type="mms:contentBaseType"/>
+ <element name="approx" type="mms:contentBaseType"/>
+
+ <!-- "csetrel2ary" -->
+ <element name="in" type="mms:contentBaseType"/>
+ <element name="notin" type="mms:contentBaseType"/>
+ <element name="notsubset" type="mms:contentBaseType"/>
+ <element name="notprsubset" type="mms:contentBaseType"/>
+
+ <!-- "csetrelnary" -->
+ <element name="subset" type="mms:contentBaseType"/>
+ <element name="prsubset" type="mms:contentBaseType"/>
+
+ <!-- "cseqrel2ary" -->
+ <element name="tendsto" type="mms:tendstoType"/>
+
+ <complexType name="tendstoType">
+  <complexContent>
+   <extension base="mms:contentBaseType"
+    <attribute ref="mms:type" use="optional"/>
+   </extension>
+  </complexContent>
+ </complexType>
+
+</schema>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

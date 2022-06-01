@@ -1,0 +1,68 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:mms="http://www.orcca.on.ca/MathML/Schema"
+        targetNamespace="http://www.orcca.on.ca/MathML/Schema"
+        elementFormDefault="qualified"
+        attributeFormDefault="qualified">
+
+ <annotation>
+  <documentation xml:lang="en">
+   Module name: MathML.xsd
+   Size: 1.7 KB
+   XML schema for top-level element 'math' in MathML, and 
+   redefinition of PresExpression group and 
+   ContentExpression group.
+   Copyright 2002 ORCCA. All rights reserved.
+  </documentation>
+ </annotation>
+
+ <include schemaLocation="http://www.orcca.on.ca/MathML/Schema/mathAtts.xsd"/>  
+
+ <redefine schemaLocation="http://www.orcca.on.ca/MathML/Schema/Meta-MathML-Presentation.xsd">
+  <!-- redefinition of PresExpression group -->
+  <group name="PresExpression">
+   <choice minOccurs="0" maxOccurs="unbounded">
+    <group ref="mms:PresExpression"/>
+    <group ref="mms:ContInPres"/>
+   </choice>
+  </group>
+ </redefine>
+
+ <redefine schemaLocation="http://www.orcca.on.ca/MathML/schemas/Meta-MathML-Content.xsd">
+  <!-- redefinition of ContentExpression group -->
+  <group name="ContentExpression">
+   <choice minOccurs="0" maxOccurs="unbounded">
+    <group ref="mms:ContentExpression"/>
+    <group ref="mms:PresInCont"/>
+   </choice>
+  </group>   
+ </redefine> 
+
+ <group name="MathExpression">
+  <choice minOccurs="0" maxOccurs="unbounded">
+   <group ref="mms:ContInPres"/>
+   <group ref="mms:PresInCont"/>
+  </choice>
+ </group>
+
+ <complexType name="mathType">
+  <group ref="mms:MathExpression" minOccurs="0" maxOccurs="unbounded"/>
+  <attributeGroup ref="mms:topinfo"/>
+  <attributeGroup ref="mms:browif"/>
+ </complexType>
+
+ <element name="math" type="mms:mathType"/> 
+
+</schema> 
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,49 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:mms="http://www.orcca.on.ca/MathML/Schema"
+        targetNamespace="http://www.orcca.on.ca/MathML/Schema"
+        elementFormDefault="qualified"
+        attributeFormDefault="qualified">
+
+ <annotation>
+  <documentation xml:lang="en">
+   Module name: MathMLCommonAtts.xsd
+   Size: 1.2 KB
+   XML schema for global attributes in MathML.
+   Copyright 2002 ORCCA. All rights reserved.
+  </documentation>
+ </annotation>
+
+ <attributeGroup name="MATHML.xmlns.attrib">
+  <attribute name="xmlns:m" type="string" fixed="http://www.w3.org/1998/Math/MathML"/>
+  <attribute name="xmlns:xlink" type="string" fixed="http://www.w3.org/1999/xlink"/>
+ </attributeGroup>
+
+ <attributeGroup name="MATHML.Common.attrib">
+  <attributeGroup ref="mms:MATHML.xmlns.attrib"/>
+  <attribute name="xlink:href" type="string" use="optional"/>
+  <attribute name="class" type="string" use="optional"/>
+  <attribute name="style" type="string" use="optional"/>
+  <attribute name="id" type="ID" use="optional"/>
+  <attribute name="xref" type="IDREF" use="optional"/>
+  <attribute name="other" type="string" use="optional"/>
+ </attributeGroup>
+ 
+</schema>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

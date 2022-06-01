@@ -1,0 +1,57 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net48;net6.0</TargetFrameworks>
+    <PackageId>MathMl</PackageId>
+    <Company>SpocWeb</Company>
+    <Authors>SpocWeb</Authors>
+    <Product>MathMl</Product>
+    <Description>Library to parse and generate MathML</Description>
+    <Copyright>SpocWeb.com</Copyright>
+    <PackageProjectUrl>http://Spoc-Web.com</PackageProjectUrl>
+    <PackageTags>MathML XML</PackageTags>
+    <ApplicationIcon />
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <LangVersion>latest</LangVersion>
+    <!--8.0 with Classes, except Interfaces Default Implementations!-->
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <OutputType>Exe</OutputType>
+    <StartupObject></StartupObject>
+    <LangVersion>latest</LangVersion><!--8.0 with Classes, except Interfaces Default Implementations!-->
+    <ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Tests\**" />
+    <EmbeddedResource Remove="Tests\**" />
+    <None Remove="Tests\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="**\*.vrn" />
+    <None Remove="**\*.zip" />
+    <None Remove="**\*.bak" />
+    <None Remove="**\*.DotSettings" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\CompanyInfo.cs" Link="Properties\CompanyInfo.cs" />
+    <Compile Include="..\..\GlobalUsings.cs" Link="Properties\GlobalUsings.cs" />
+    <Compile Include="..\..\SolutionInfo.sdk.cs" Link="Properties\SolutionInfo.sdk.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\IMaths\Extensions\enumerables\XPosition.cs" Link="_Links\XPosition.cs" />
+    <Compile Include="..\XPaths.Parsing\XmlNodeWriter.cs" Link="_Links\XmlNodeWriter.cs" />
+    <Compile Include="..\XPaths.Parsing\XmlNs.cs" Link="_Links\XmlNs.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="_Links\" />
+  </ItemGroup>
+
+
+
+</Project>
