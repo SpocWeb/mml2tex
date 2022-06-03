@@ -21,7 +21,17 @@
     <LangVersion>latest</LangVersion><!--8.0 with Classes, except Interfaces Default Implementations!-->
     <ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
+		<SignAssembly>True</SignAssembly>
+		<DelaySign>False</DelaySign>
+		<AssemblyOriginatorKeyFile>..\..\org.SpocWeb.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
+
+  <ItemGroup>
+		<None Include="..\..\org.SpocWeb.snk" Link="Properties\org.SpocWeb.snk" />
+		<Compile Include="..\..\CompanyInfo.cs" Link="Properties\CompanyInfo.cs" />
+    <Compile Include="..\..\GlobalUsings.cs" Link="Properties\GlobalUsings.cs" />
+    <Compile Include="..\..\SolutionInfo.sdk.cs" Link="Properties\SolutionInfo.sdk.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <Compile Remove="Tests\**" />
@@ -37,12 +47,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="..\..\CompanyInfo.cs" Link="Properties\CompanyInfo.cs" />
-    <Compile Include="..\..\GlobalUsings.cs" Link="Properties\GlobalUsings.cs" />
-    <Compile Include="..\..\SolutionInfo.sdk.cs" Link="Properties\SolutionInfo.sdk.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Include="..\IMaths\Extensions\enumerables\XPosition.cs" Link="_Links\XPosition.cs" />
     <Compile Include="..\XPaths.Parsing\XmlNodeWriter.cs" Link="_Links\XmlNodeWriter.cs" />
     <Compile Include="..\XPaths.Parsing\XmlNs.cs" Link="_Links\XmlNs.cs" />
@@ -51,7 +55,5 @@
   <ItemGroup>
     <Folder Include="_Links\" />
   </ItemGroup>
-
-
 
 </Project>
