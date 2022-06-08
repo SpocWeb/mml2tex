@@ -2,10 +2,10 @@
 
   <PropertyGroup>
     <TargetFrameworks>net48;net6.0</TargetFrameworks>
-    <PackageId>MathMl</PackageId>
+    <PackageId>SpocWeb.MathML</PackageId>
     <Company>SpocWeb</Company>
     <Authors>SpocWeb</Authors>
-    <Product>MathMl</Product>
+    <Product>SpocWeb.MathML</Product>
     <Description>Library to parse and generate MathML</Description>
     <Copyright>SpocWeb.com</Copyright>
     <PackageProjectUrl>http://Spoc-Web.com</PackageProjectUrl>
@@ -24,6 +24,11 @@
 		<SignAssembly>True</SignAssembly>
 		<DelaySign>False</DelaySign>
 		<AssemblyOriginatorKeyFile>..\..\org.SpocWeb.snk</AssemblyOriginatorKeyFile>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<RepositoryUrl>https://github.com/SpocWeb/SpocWeb.MathML</RepositoryUrl>
+		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+		<PackageLicenseExpression>Hippocratic-2.1</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
@@ -54,6 +59,13 @@
 
   <ItemGroup>
     <Folder Include="_Links\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
