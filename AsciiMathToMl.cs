@@ -1194,7 +1194,7 @@ namespace org.SpocWeb.root.Data.xmls.MathML {
 					newFrag.AppendChild(node);
 				}
 				newFrag.AppendChild(CreateMmlNode(symbol.Tag, _Document.CreateTextNode(st)));
-				if (st[st.Length - 1] == ' ') {
+				if (st.Last() == ' ') {
 					var node = CreateMmlNode(Tag.Space);
 					node.SetAttribute(ATTR_WIDTH, ATTR_WIDTH_VALUE);
 					newFrag.AppendChild(node);
