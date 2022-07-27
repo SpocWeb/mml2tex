@@ -857,22 +857,20 @@ namespace org.SpocWeb.root.Data.xmls.MathML {
 			RefreshSymbols();
 		}
 
-		static void AddAlternative(AmSymbol amSymbol, string lower) {
-			AM_SYMBOLS.Add
-			(new AmSymbol(amSymbol.SymbolTyp, lower, amSymbol.Tag, amSymbol.Output, null, amSymbol.Type) {
-				Acc = amSymbol.Acc
-				, Description = amSymbol.Description
-				, AtName = amSymbol.AtName
-				, AtVal = amSymbol.AtVal
-				, Codes = amSymbol.Codes
-				, IsFunc = amSymbol.IsFunc
-				, IsInvisible = amSymbol.IsInvisible
-				, NotExCopy = amSymbol.NotExCopy
-				, RewriteLeftRight = amSymbol.RewriteLeftRight
-			});
-		}
+			static void AddAlternative(AmSymbol amSymbol, string lower) => AM_SYMBOLS.Add
+				(new AmSymbol(amSymbol.SymbolTyp, lower, amSymbol.Tag, amSymbol.Output, null, amSymbol.Type) {
+					Acc = amSymbol.Acc
+					, Description = amSymbol.Description
+					, AtName = amSymbol.AtName
+					, AtVal = amSymbol.AtVal
+					, Codes = amSymbol.Codes
+					, IsFunc = amSymbol.IsFunc
+					, IsInvisible = amSymbol.IsInvisible
+					, NotExCopy = amSymbol.NotExCopy
+					, RewriteLeftRight = amSymbol.RewriteLeftRight
+				});
 
-		static void RefreshSymbols() {
+			static void RefreshSymbols() {
 			AM_SYMBOLS.Sort(CompareNames);
 			_SORTED_ASCII_NAMES.Clear();
 			_SORTED_ASCII_NAMES.Capacity = AM_SYMBOLS.Count;

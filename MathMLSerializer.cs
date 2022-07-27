@@ -182,9 +182,7 @@ namespace org.SpocWeb.root.Data.xmls.MathML {
 			}
 		}
 
-		public static void WriteEnum(this TextWriter writer, Enum value) {
-			writer.Write(value.ToEnumString(true));
-		}
+		public static void WriteEnum(this TextWriter writer, Enum value) => writer.Write(value.ToEnumString(true));
 
 		public static string ToEnumString(this Enum value, bool? toLower = null) {
 			var enumerationType = value.GetType();

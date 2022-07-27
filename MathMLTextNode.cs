@@ -8,13 +8,9 @@ namespace org.SpocWeb.root.Data.xmls.MathML {
 
 		public string Content { get; set; }
 
-		public override void WriteXml(XmlWriter writer) {
-			writer.WriteString(Content);
-		}
+		public override void WriteXml(XmlWriter writer) => writer.WriteString(Content);
 
-		public override void ReadXml(XmlReader reader) {
-			Content = reader.ReadString();
-		}
+		public override void ReadXml(XmlReader reader) => Content = reader.ReadString();
 
 		internal override AsciiMath.Parser.AmSymbol GetSymbol() 
 			=> AsciiMath.Parser.ASCII_NAMES_BY_CHAR.TryGetValue(Content, out var symbol) ? symbol : null;

@@ -49,9 +49,7 @@ namespace org.SpocWeb.root.Data.xmls.MathML {
 		[DefaultValue(MMathVariant.Normal)]
 		public MMathVariant MathVariant { get; set; }
 
-		public override void WriteXml(XmlWriter writer) {
-			this.WriteTo(writer);
-		}
+		public override void WriteXml(XmlWriter writer) => this.WriteTo(writer);
 
 		static readonly Dictionary<string, Type> TypesByName = new();
 		static MElement() {

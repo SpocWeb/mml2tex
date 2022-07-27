@@ -85,8 +85,6 @@ namespace org.SpocWeb.root.Data.xmls.MathML.Attributes {
 			return sb.ToString();
 		}
 
-		public void WriteXml(XmlWriter writer) {
-			writer.WriteString(ToString());
-		}
+		public void WriteXml(XmlWriter writer) => writer.WriteString(ToString());
 	}
 }

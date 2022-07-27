@@ -22,9 +22,7 @@ namespace org.SpocWeb.root.Data.xmls.MathML {
 			set => GetStringBuilder().Length = value; 
 		}
 
-		public override void Write(bool value) {
-			Write(value ? ValueTrue : ValueFalse);
-		}
+		public override void Write(bool value) => Write(value ? ValueTrue : ValueFalse);
 
 	}
 }
