@@ -24,7 +24,6 @@
 		<SignAssembly>True</SignAssembly>
 		<DelaySign>False</DelaySign>
 		<AssemblyOriginatorKeyFile>..\..\org.SpocWeb.snk</AssemblyOriginatorKeyFile>
-		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<!--PackageReadmeFile>ReadMe.md</PackageReadmeFile-->
 		<RepositoryUrl>https://github.com/SpocWeb/SpocWeb.MathML</RepositoryUrl>
 		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
