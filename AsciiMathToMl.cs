@@ -1077,7 +1077,7 @@ namespace org.SpocWeb.root.Data.xmls.MathML {
 		}
 
 		[SuppressMessage("ReSharper", "PossibleNullReferenceException")]
-		void TrimFenceSeparators(XmlNode newFrag, StringBuilder separators) {
+		static void TrimFenceSeparators(XmlNode newFrag, StringBuilder separators) {
 			XmlNode lastSep = CreateSentinel(); newFrag.AppendChild(lastSep);
 			var firstSep = CreateSentinel(); newFrag.PrependChild(firstSep);
 			//List<XmlElement> curr = new List<XmlElement>();
