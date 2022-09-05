@@ -52,7 +52,7 @@
 
   <ItemGroup>
     <Compile Include="..\IMaths\Extensions\enumerables\XPosition.cs" Link="_Links\XPosition.cs" />
-    <Compile Include="..\IMaths\Extensions\text\XLast.cs" Link="_Links\XLast.cs" />
+    <Compile Include="..\SpocWeb.Interfaces\Extensions\text\XLast.cs" Link="_Links\XLast.cs" />
     <Compile Include="..\XPaths.Parsing\XmlNodeWriter.cs" Link="_Links\XmlNodeWriter.cs" />
     <Compile Include="..\XPaths.Parsing\XmlNs.cs" Link="_Links\XmlNs.cs" />
   </ItemGroup>
