@@ -1,32 +1,31 @@
 ﻿using System.Xml.Serialization;
 
-namespace org.SpocWeb.root.Data.xmls.MathML.Attributes {
+namespace org.SpocWeb.root.Data.xmls.MathML.Attributes;
 
-	public enum MMeasuredLengthUnit : byte {
+public enum MMeasuredLengthUnit : byte {
 
-		Em = 1,
+	Em = 1,
 
-		Ex,
+	Ex,
 
-		[XmlEnum("px")]
-		Pixels,
+	[XmlEnum("px")]
+	Pixels,
 
-		[XmlEnum("in")]
-		Inches,
+	[XmlEnum("in")]
+	Inches,
 
-		[XmlEnum("cm")]
-		CentiMeters,
+	[XmlEnum("cm")]
+	CentiMeters,
 
-		[XmlEnum("mm")]
-		MilliMeters,
+	[XmlEnum("mm")]
+	MilliMeters,
 
-		[XmlEnum("pt")]
-		Points,
+	[XmlEnum("pt")]
+	Points,
 
-		[XmlEnum("pc")]
-		Picas,
+	[XmlEnum("pc")]
+	Picas,
 
-		[XmlEnum("%")]
-		Percent
-	}
+	[XmlEnum("%")]
+	Percent
 }

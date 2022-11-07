@@ -1,12 +1,11 @@
-﻿namespace org.SpocWeb.root.Data.xmls.MathML {
+﻿namespace org.SpocWeb.root.Data.xmls.MathML;
 
-	[AttributeUsage(AttributeTargets.Property)]
-	public class OrderAttribute : Attribute {
+[AttributeUsage(AttributeTargets.Property)]
+public class OrderAttribute : Attribute {
 
-		public OrderAttribute(int orderIndex) {
-			OrderIndex = orderIndex;
-		}
-
-		public int OrderIndex { get; }
+	public OrderAttribute(int orderIndex) {
+		OrderIndex = orderIndex;
 	}
+
+	public int OrderIndex { get; }
 }

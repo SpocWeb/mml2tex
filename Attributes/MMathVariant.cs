@@ -1,73 +1,72 @@
-﻿namespace org.SpocWeb.root.Data.xmls.MathML.Attributes {
+﻿namespace org.SpocWeb.root.Data.xmls.MathML.Attributes;
 
-	public static class XMathVariant {
+public static class XMathVariant {
 
-		public const string STR_OPEN = ""; //"{";
+	public const string STR_OPEN = ""; //"{";
 
-		public static string Prefix(this MMathVariant mathVariant) {
-			switch (mathVariant) {
-				case MMathVariant.Normal: break;
-				case MMathVariant.Bold: return "bb"+STR_OPEN;
-				case MMathVariant.Italic: return "it"+STR_OPEN;
-				case MMathVariant.Bold_Italic: return "bb"+STR_OPEN+"it"+STR_OPEN;
-				case MMathVariant.Double_Struck: return "bbb"+STR_OPEN;
-				case MMathVariant.Bold_Fraktur: return "bb"+STR_OPEN+"fr"+STR_OPEN;
-				case MMathVariant.Script: return "cc"+STR_OPEN;
-				case MMathVariant.Bold_Script: return "bb"+STR_OPEN+"cc"+STR_OPEN;
-				case MMathVariant.Fraktur: return "fr"+STR_OPEN;
-				case MMathVariant.Sans_Serif: return "sf"+STR_OPEN;
-				case MMathVariant.Bold_Sans_Serif: return "bb"+STR_OPEN+"sf"+STR_OPEN;
-				case MMathVariant.Sans_Serif_Italic: return "it"+STR_OPEN+"sf"+STR_OPEN;
-				case MMathVariant.Sans_Serif_Bold_Italic: return "bb"+STR_OPEN+"it"+STR_OPEN+"sf"+STR_OPEN;
-				case MMathVariant.Monospace: return "tt"+STR_OPEN;
-				case MMathVariant.Initial: break;
-				case MMathVariant.Tailed: break;
-				case MMathVariant.Looped: break;
-				case MMathVariant.Stretched: break;
-				default: throw new ArgumentOutOfRangeException();
-			}
-			return "";
+	public static string Prefix(this MMathVariant mathVariant) {
+		switch (mathVariant) {
+			case MMathVariant.Normal: break;
+			case MMathVariant.Bold: return "bb"+STR_OPEN;
+			case MMathVariant.Italic: return "it"+STR_OPEN;
+			case MMathVariant.Bold_Italic: return "bb"+STR_OPEN+"it"+STR_OPEN;
+			case MMathVariant.Double_Struck: return "bbb"+STR_OPEN;
+			case MMathVariant.Bold_Fraktur: return "bb"+STR_OPEN+"fr"+STR_OPEN;
+			case MMathVariant.Script: return "cc"+STR_OPEN;
+			case MMathVariant.Bold_Script: return "bb"+STR_OPEN+"cc"+STR_OPEN;
+			case MMathVariant.Fraktur: return "fr"+STR_OPEN;
+			case MMathVariant.Sans_Serif: return "sf"+STR_OPEN;
+			case MMathVariant.Bold_Sans_Serif: return "bb"+STR_OPEN+"sf"+STR_OPEN;
+			case MMathVariant.Sans_Serif_Italic: return "it"+STR_OPEN+"sf"+STR_OPEN;
+			case MMathVariant.Sans_Serif_Bold_Italic: return "bb"+STR_OPEN+"it"+STR_OPEN+"sf"+STR_OPEN;
+			case MMathVariant.Monospace: return "tt"+STR_OPEN;
+			case MMathVariant.Initial: break;
+			case MMathVariant.Tailed: break;
+			case MMathVariant.Looped: break;
+			case MMathVariant.Stretched: break;
+			default: throw new ArgumentOutOfRangeException();
 		}
-
+		return "";
 	}
 
-	[SuppressMessage("ReSharper", "InconsistentNaming")]
-	public enum MMathVariant : sbyte {
+}
 
-		Normal = 1,
+[SuppressMessage("ReSharper", "InconsistentNaming")]
+public enum MMathVariant : sbyte {
 
-		Bold,
+	Normal = 1,
 
-		Italic,
+	Bold,
 
-		Bold_Italic,
+	Italic,
 
-		Double_Struck,
+	Bold_Italic,
 
-		Bold_Fraktur,
+	Double_Struck,
 
-		Script,
+	Bold_Fraktur,
 
-		Bold_Script,
+	Script,
 
-		Fraktur,
+	Bold_Script,
 
-		Sans_Serif,
+	Fraktur,
 
-		Bold_Sans_Serif,
+	Sans_Serif,
 
-		Sans_Serif_Italic,
+	Bold_Sans_Serif,
 
-		Sans_Serif_Bold_Italic,
+	Sans_Serif_Italic,
 
-		Monospace,
+	Sans_Serif_Bold_Italic,
 
-		Initial,
+	Monospace,
 
-		Tailed,
+	Initial,
 
-		Looped,
+	Tailed,
 
-		Stretched 
-	}
+	Looped,
+
+	Stretched 
 }

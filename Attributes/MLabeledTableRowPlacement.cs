@@ -1,13 +1,12 @@
-﻿namespace org.SpocWeb.root.Data.xmls.MathML.Attributes {
+﻿namespace org.SpocWeb.root.Data.xmls.MathML.Attributes;
 
-	public enum MLabeledTableRowPlacement : sbyte {
+public enum MLabeledTableRowPlacement : sbyte {
 
-		Left = 1,
+	Left = 1,
 
-		Right,
+	Right,
 
-		LeftOverlap,
+	LeftOverlap,
 
-		RightOverlap
-	}
+	RightOverlap
 }

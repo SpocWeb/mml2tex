@@ -1,11 +1,10 @@
-﻿namespace MathMl {
+﻿namespace MathMl;
 
-	[AttributeUsage(AttributeTargets.All)]
-	public class NameAttribute : Attribute {
-		public NameAttribute(string name) {
-			Name = name;
-		}
-
-		public string Name { get; }
+[AttributeUsage(AttributeTargets.All)]
+public class NameAttribute : Attribute {
+	public NameAttribute(string name) {
+		Name = name;
 	}
+
+	public string Name { get; }
 }

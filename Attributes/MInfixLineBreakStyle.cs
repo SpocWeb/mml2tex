@@ -1,11 +1,10 @@
-﻿namespace org.SpocWeb.root.Data.xmls.MathML.Attributes {
+﻿namespace org.SpocWeb.root.Data.xmls.MathML.Attributes;
 
-	public enum MInfixLineBreakStyle : sbyte {
+public enum MInfixLineBreakStyle : sbyte {
 
-		Before = 1,
+	Before = 1,
 
-		After,
+	After,
 
-		Duplicate
-	}
+	Duplicate
 }

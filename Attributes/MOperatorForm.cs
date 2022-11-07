@@ -1,12 +1,11 @@
-﻿namespace org.SpocWeb.root.Data.xmls.MathML.Attributes {
+﻿namespace org.SpocWeb.root.Data.xmls.MathML.Attributes;
 
-	public enum MOperatorForm : sbyte {
+public enum MOperatorForm : sbyte {
 
-		Prefix = 1,
+	Prefix = 1,
 
-		Infix,
+	Infix,
 
-		Postfix
+	Postfix
 
-	}
 }

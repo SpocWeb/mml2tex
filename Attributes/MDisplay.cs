@@ -1,9 +1,8 @@
-﻿namespace org.SpocWeb.root.Data.xmls.MathML.Attributes {
+﻿namespace org.SpocWeb.root.Data.xmls.MathML.Attributes;
 
-	public enum MDisplay {
+public enum MDisplay {
 
-		Block = 1,
+	Block = 1,
 
-		Inline
-	}
+	Inline
 }

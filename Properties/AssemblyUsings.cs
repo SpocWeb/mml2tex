@@ -2,4 +2,4 @@
 
 // ReSharper disable once EmptyNamespace
 // ReSharper disable once CheckNamespace
-namespace System.Net.Http { }
+namespace System.Net.Http; 

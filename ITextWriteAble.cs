@@ -1,6 +1,6 @@
-﻿namespace org.SpocWeb.root.Data.xmls.MathML {
-	public interface ITextWriteAble {
+﻿namespace org.SpocWeb.root.Data.xmls.MathML;
 
-		long WriteTo(TextWriter writer, long lengthLeft); //= long.MaxValue);
-	}
+public interface ITextWriteAble {
+
+	long WriteTo(TextWriter writer, long lengthLeft); //= long.MaxValue);
 }
