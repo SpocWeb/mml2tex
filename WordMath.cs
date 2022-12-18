@@ -1,14 +1,11 @@
-﻿using System.Diagnostics.Contracts;
-using System.Text;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 using System.Xml;
-using org.SpocWeb.root.Extensions.enumerables;
 
 namespace org.SpocWeb.root.Data.xmls.MathML;
 
 /// <summary> Static Methods to <see cref="Parse"/> and convert <see cref="ToAsciiMath"/> </summary>
-public static class WordMath {
-
+public static class WordMath
+{
 	/// <summary> Parses <paramref name="wordMath"/> into <see cref="Elements.Math"/> </summary>
 	/// <remarks>
 	/// WordMath linear Notation uses '\' for Escaping and to start Commands
@@ -147,6 +144,7 @@ static class XStringBuilder {
 		}
 		return str;
 	}
+
 	/// <summary>Removes all <paramref name="charsToRemove"/> Characters and the last</summary>
 	/// <remarks>the last can be removed separately</remarks>
 	public static int RemoveAll(this StringBuilder str, string charsToRemove, int? stop = null, int start = 0)
