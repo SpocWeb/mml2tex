@@ -4,56 +4,56 @@ using System.Xml;
 
 //#pragma warning disable 169
 
-namespace org.SpocWeb.root.Data.xmls.MathML;
+namespace org.SpocWeb.root.Data.xmls.MathML {
 
-/// <summary> convert ASCII math notation and (some) LaTeX to Presentation MathML. </summary>
-/// <example>
-/// <see cref="ParseAsciiMath"/> converts an asciiMath String to MathML.
-/// see AsciiMathToMlTests to save a Reference to NUnit.
-///
-/// This Implementation uses explicit <see cref="M_FENCED"/> Elements
-/// instead of unstructured <see cref="M_O"/> Elements with bracket Characters.
-/// This allows better post-processing to e.g. eliminate redundant Braces. 
-///
-/// More examples here: https://www.intmath.com
-/// Good MathMl Rendering: https://www.tutorialspoint.com/online_mathml_editor.php 
-/// <a href="https://developer.mozilla.org/en-US/docs/Web/MathML"/>
-/// <a href="http://wjagray.co.uk/maths/ASCIIMathTutorial.html"/>
-/// https://www.tutorialspoint.com/mathml
-/// In Presentational MathML the Function Names are only Symbols enclosed in {mi/} Elements, 
-/// but in semantic Content MathML ALL Names must be lower-case! 
-/// https://www.w3.org/TR/MathML3/ 
-/// Renders a Table only when the Number of Elements in all Rows match! 
-/// Column Borders can be introduced by inserting | between Columns in the first Row 
-/// 
-/// Parsing ASCII math expressions with the following grammar
-/// v ::= [^\W_0-9]+ | greek letters | numbers | other constant symbols
-/// u ::= sqrt | text | bb | other unary symbols for font commands
-/// b ::= frac | root | stackRel         binary symbols => AmGetSymbol()
-/// l ::= ( | [ | { | (: | {: &lt;&lt;   left  brackets ([{⟨ and invisible
-/// r ::= ) | ] | } | :) | :} >>         right brackets )]}⟩ and invisible
-/// S ::= v | lEr | uS | bSS |v!         Simple expression => AmParseS()
-/// I ::= S_S | S^S | S_S^S | S          Intermediate expression => AmParseI()
-/// E ::= IE | I/I                       Expression => AmParseExpr
-/// Each terminal symbol is translated into a corresponding mathMl node.
-/// 
-/// Operators are processed LtR (left-to-right) 
-/// unless their Precedence Levels differ:
-/// 0 Brackets: ({[]})
-/// 1 Factorial: !
-/// 2 Multiplication, Division: */
-/// 3 Addition, Subtraction: +-
-/// </example>
-public static class AsciiMath {
-	/// <inheritdoc cref="Parser.ParseAsciiMath"/>
-	public static XmlNode Parse(string asciiMath) => new Parser().ParseAsciiMath(asciiMath);
+	/// <summary> convert ASCII math notation and (some) LaTeX to Presentation MathML. </summary>
+	/// <example>
+	/// <see cref="ParseAsciiMath"/> converts an asciiMath String to MathML.
+	/// see AsciiMathToMlTests to save a Reference to NUnit.
+	///
+	/// This Implementation uses explicit <see cref="M_FENCED"/> Elements
+	/// instead of unstructured <see cref="M_O"/> Elements with bracket Characters.
+	/// This allows better post-processing to e.g. eliminate redundant Braces. 
+	///
+	/// More examples here: https://www.intmath.com
+	/// Good MathMl Rendering: https://www.tutorialspoint.com/online_mathml_editor.php 
+	/// <a href="https://developer.mozilla.org/en-US/docs/Web/MathML"/>
+	/// <a href="http://wjagray.co.uk/maths/ASCIIMathTutorial.html"/>
+	/// https://www.tutorialspoint.com/mathml
+	/// In Presentational MathML the Function Names are only Symbols enclosed in {mi/} Elements, 
+	/// but in semantic Content MathML ALL Names must be lower-case! 
+	/// https://www.w3.org/TR/MathML3/ 
+	/// Renders a Table only when the Number of Elements in all Rows match! 
+	/// Column Borders can be introduced by inserting | between Columns in the first Row 
+	/// 
+	/// Parsing ASCII math expressions with the following grammar
+	/// v ::= [^\W_0-9]+ | greek letters | numbers | other constant symbols
+	/// u ::= sqrt | text | bb | other unary symbols for font commands
+	/// b ::= frac | root | stackRel         binary symbols => AmGetSymbol()
+	/// l ::= ( | [ | { | (: | {: &lt;&lt;   left  brackets ([{⟨ and invisible
+	/// r ::= ) | ] | } | :) | :} >>         right brackets )]}⟩ and invisible
+	/// S ::= v | lEr | uS | bSS |v!         Simple expression => AmParseS()
+	/// I ::= S_S | S^S | S_S^S | S          Intermediate expression => AmParseI()
+	/// E ::= IE | I/I                       Expression => AmParseExpr
+	/// Each terminal symbol is translated into a corresponding mathMl node.
+	/// 
+	/// Operators are processed LtR (left-to-right) 
+	/// unless their Precedence Levels differ:
+	/// 0 Brackets: ({[]})
+	/// 1 Factorial: !
+	/// 2 Multiplication, Division: */
+	/// 3 Addition, Subtraction: +-
+	/// </example>
+	public static class AsciiMath {
+		/// <inheritdoc cref="Parser.ParseAsciiMath"/>
+		public static XmlNode Parse(string asciiMath) => new Parser().ParseAsciiMath(asciiMath);
 
-	public static void Main(string[] args) {
-		foreach(var str in args) {
-			Console.WriteLine(Parse(str).OuterXml);
-			Console.WriteLine();
+		public static void Main(string[] args) {
+			foreach(var str in args) {
+				Console.WriteLine(Parse(str).OuterXml);
+				Console.WriteLine();
+			}
 		}
-	}
 
 	public class Parser {
 
@@ -832,7 +832,7 @@ public static class AsciiMath {
 			for (var i = 0; i < symLen; i++) {
 				var amSymbol = AM_SYMBOLS[i];
 				if (amSymbol.Output?.Length > 0 && amSymbol.Type != Token.Infix //.Output[0] != '.'
-				   ) {
+					) {
 					if (_ASCII_NAMES_BY_CHAR.TryGetValue(amSymbol.Output, out var old)) {
 						if (old.Input.Length > amSymbol.Input.Length) {
 							_ASCII_NAMES_BY_CHAR[amSymbol.Output] = amSymbol;
@@ -857,20 +857,20 @@ public static class AsciiMath {
 			RefreshSymbols();
 		}
 
-		static void AddAlternative(AmSymbol amSymbol, string lower) => AM_SYMBOLS.Add
-		(new AmSymbol(amSymbol.SymbolTyp, lower, amSymbol.Tag, amSymbol.Output, null, amSymbol.Type) {
-			Acc = amSymbol.Acc
-			, Description = amSymbol.Description
-			, AtName = amSymbol.AtName
-			, AtVal = amSymbol.AtVal
-			, Codes = amSymbol.Codes
-			, IsFunc = amSymbol.IsFunc
-			, IsInvisible = amSymbol.IsInvisible
-			, NotExCopy = amSymbol.NotExCopy
-			, RewriteLeftRight = amSymbol.RewriteLeftRight
-		});
+			static void AddAlternative(AmSymbol amSymbol, string lower) => AM_SYMBOLS.Add
+				(new AmSymbol(amSymbol.SymbolTyp, lower, amSymbol.Tag, amSymbol.Output, null, amSymbol.Type) {
+					Acc = amSymbol.Acc
+					, Description = amSymbol.Description
+					, AtName = amSymbol.AtName
+					, AtVal = amSymbol.AtVal
+					, Codes = amSymbol.Codes
+					, IsFunc = amSymbol.IsFunc
+					, IsInvisible = amSymbol.IsInvisible
+					, NotExCopy = amSymbol.NotExCopy
+					, RewriteLeftRight = amSymbol.RewriteLeftRight
+				});
 
-		static void RefreshSymbols() {
+			static void RefreshSymbols() {
 			AM_SYMBOLS.Sort(CompareNames);
 			_SORTED_ASCII_NAMES.Clear();
 			_SORTED_ASCII_NAMES.Capacity = AM_SYMBOLS.Count;
@@ -959,8 +959,8 @@ public static class AsciiMath {
 		public static bool IsSeparator(char chr) => 0 <= StrSeparators.IndexOf(chr);
 		public static bool IsSeparator(string str) => str.Length == 1 && IsSeparator(str[0]);
 		public static bool IsSeparator(XmlNode child) => child.Name == M_O 
-		                                                 && child.FirstChild == child.LastChild 
-		                                                 && IsSeparator(child.FirstChild.Value); //.InnerText);
+			&& child.FirstChild == child.LastChild 
+			&& IsSeparator(child.FirstChild.Value); //.InnerText);
 
 		static char CollectDigits(string str, char chr, ref int pos) {
 			while ('0' <= chr && chr <= '9' && pos <= str.Length) {
@@ -1010,16 +1010,16 @@ public static class AsciiMath {
 		}
 
 		static int MatchingBracePosition(string rest, int fallBack = 0)
-			=> rest[0] switch
+		=> rest[0] switch
 			{ '{' => rest.IndexOf('}', 1)
-				, '(' => rest.IndexOf(')', 1)
-				, '[' => rest.IndexOf(']', 1)
-				, '|' => rest.IndexOf('|', 1)
-				, '〈' => rest.IndexOf('〉', 1)
-				, '≪' => rest.IndexOf('≫', 1)
-				, '"' => rest.IndexOf('"', 1)
-				, _ => fallBack
-			};
+			, '(' => rest.IndexOf(')', 1)
+			, '[' => rest.IndexOf(']', 1)
+			, '|' => rest.IndexOf('|', 1)
+			, '〈' => rest.IndexOf('〉', 1)
+			, '≪' => rest.IndexOf('≫', 1)
+			, '"' => rest.IndexOf('"', 1)
+			, _ => fallBack
+		};
 
 		static XmlElement CreateNodeFrom(AmSymbol symbol) => CreateMmlNode(symbol.Tag, _Document.CreateTextNode(symbol.Output));
 
@@ -1210,7 +1210,7 @@ public static class AsciiMath {
 				if (symbol.IsFunc) { // functions hack
 					var st = rest.Length > 0 ? rest[0] : 0;
 					if (st == '^' || st == '_' || st == '/' || st == '|' || st == ','
-					    || st != '(' && symbol.Input.Length == 1 && symbol.Input[0].IsWordChar()) {
+						|| st != '(' && symbol.Input.Length == 1 && symbol.Input[0].IsWordChar()) {
 						return new ParseResult(CreateNodeFrom(symbol), rest);
 					}
 					var xmlElement = CreateMmlNode(Tag.Row, CreateNodeFrom(symbol));
@@ -1247,10 +1247,10 @@ public static class AsciiMath {
 					var xmlElement = CreateMmlNode(symbol.Tag, result.Node);
 					var accNode = CreateMmlNode(Tag.O, _Document.CreateTextNode(symbol.Output));
 					if (symbol.Input == STR_VEC && (
-						    result.Node.Name == M_FENCED 
-						    && result.Node.ChildNodes.Count == 1
-						    && result.Node.FirstChild.FirstChild.Value?.Length == 1 
-						    || result.Node.FirstChild.Value?.Length == 1)) {
+						result.Node.Name == M_FENCED 
+						&& result.Node.ChildNodes.Count == 1
+						&& result.Node.FirstChild.FirstChild.Value?.Length == 1 
+						|| result.Node.FirstChild.Value?.Length == 1)) {
 						accNode.SetAttribute("stretchy", "false");
 					}
 					xmlElement.AppendChild(accNode);
@@ -1259,7 +1259,7 @@ public static class AsciiMath {
 				if (symbol.Codes is not null) {
 					for (var i = 0; i < result.Node.ChildNodes.Count; i++) {
 						if (result.Node.ChildNodes[i].Name == M_I ||
-						    result.Node.Name == M_I) {
+							result.Node.Name == M_I) {
 							var st = result.Node.Name == M_I
 								? result.Node.FirstChild.Value
 								: result.Node.ChildNodes[i].FirstChild.Value;
@@ -1325,7 +1325,7 @@ public static class AsciiMath {
 					return new ParseResult(node, result2.Rest);
 				}
 				if (symbol.Input == STR_ROOT ||
-				    symbol.Output == STR_STACK_REL) { //TODO: STR_STACK_REL should place Elements above each other
+					symbol.Output == STR_STACK_REL) { //TODO: STR_STACK_REL should place Elements above each other
 					newFrag.AppendChild(result2.Node);
 				}
 				newFrag.AppendChild(result.Node);
@@ -1355,7 +1355,7 @@ public static class AsciiMath {
 			var separators = new StringBuilder();
 			TrimFenceSeparators(node, separators);
 			if (separators.Length > 1 ||
-			    separators.Length > 0 && separators[0] != ',') {
+				separators.Length > 0 && separators[0] != ',') {
 				node.SetAttribute("separators", separators.ToString());
 			}
 			return new ParseResult(node, rest);
@@ -1452,10 +1452,10 @@ public static class AsciiMath {
 					newFrag.AppendChild(node);
 				}
 			} while ((symbol.Type != Token.RightBracket &&
-			          (symbol.Type != Token.LeftRightBracket || rightBracket)
-			          || _BracketDepth == 0) && symbol.Output != "");
+				(symbol.Type != Token.LeftRightBracket || rightBracket)
+				|| _BracketDepth == 0) && symbol.Output != "");
 			if (symbol.Type != Token.RightBracket && 
-			    symbol.Type != Token.LeftRightBracket) {
+				symbol.Type != Token.LeftRightBracket) {
 				return new ParseResult(newFrag, rest);
 			} 
 			IsMatrix();
@@ -1476,12 +1476,12 @@ public static class AsciiMath {
 				}
 				var right = GetCloseBracket(newFrag.LastChild);
 				if (right != ")" && 
-				    right != "]") {
+					right != "]") {
 					return false; //Inner Matrix Nodes must end with ] or )
 				}
 				string left = GetOpenBracket(newFrag.FirstChild);
 				if ((left != "(" || right != ")" || symbol.Output == "}") && 
-				    (left != "[" || right != "]")) {
+					(left != "[" || right != "]")) {
 					return false;  //Inner Matrix Nodes End Braces must match Start Braces ] or )
 				}
 				if (!HasMatrixStructure()) {
@@ -1496,7 +1496,7 @@ public static class AsciiMath {
 				}
 				colLines.TrimRepeatingSuffix();
 				if (colLines.Count > 1 ||
-				    colLines.Count > 0 && colLines[0] != COL_LINES_NONE) {
+					colLines.Count > 0 && colLines[0] != COL_LINES_NONE) {
 					table.SetAttribute(ATTR_COLUMN_LINES, string.Join(" ", colLines.Skip(1)));
 				}
 				if (symbol.IsInvisible) {
@@ -1510,7 +1510,7 @@ public static class AsciiMath {
 					var newRow = CreateMmlNode(Tag.Tr); table.AppendChild(newRow);
 					for (XmlNode child; (child = oldRow.FirstChild) is not null;) {
 						if (child.ChildNodes.Count == 1 &&
-						    child.FirstChild.FirstChild?.Value == STR_V_BAR) {
+							child.FirstChild.FirstChild?.Value == STR_V_BAR) {
 							//is columnLine marker - skip it
 							columnLines?.Add("solid");
 							oldRow.RemoveChild(child); //remove <mrow><mo>|</mo>
@@ -1544,8 +1544,8 @@ public static class AsciiMath {
 						var open = GetOpenBracket(row);
 						var close = GetCloseBracket(row);
 						var isMatrix = row?.Name == M_FENCED && // ReSharper disable once PossibleNullReferenceException
-						               open == left &&
-						               close == right;
+							open == left &&
+							close == right;
 						if (!isMatrix) {
 							return false;
 						}
@@ -1605,7 +1605,7 @@ public static class AsciiMath {
 			"NN|ZZ|QQ|RR|CC|TT|AA|EE|sqrt|dx|dy|dz|dt|xx|vv|uu|nn|bb|cc|csc|cot|alpha|beta|delta|Delta|epsilon|gamma|Gamma|kappa|lambda|Lambda|omega|phi|Phi|Pi|psi|Psi|rho|sigma|Sigma|tau|theta|Theta|xi|Xi|zeta";
 		const string LETTER = "[a-zA-HJ-Z](?=(?:[^a-zA-Z]|$|" + AMBIG_AM_TOKEN + ENGLISH_AM_TOKEN + SIMPLE_AM_TOKEN + "))|";
 		const string TOKEN = LETTER + TEX_COMMAND + @"\d+|[-()[\]{}+=*&^_%\@/<>,\|!:;'~]|\.(?!(?: |$))|"
-		                     + AMBIG_AM_TOKEN + ENGLISH_AM_TOKEN + SIMPLE_AM_TOKEN;
+			+ AMBIG_AM_TOKEN + ENGLISH_AM_TOKEN + SIMPLE_AM_TOKEN;
 
 		static readonly Regex _RE3 = new(@"([{}[\]])");
 		static readonly Regex _RE4 = new(@"((^|\s)\([^\W_0-9]{2,}.*?)\)`");
@@ -1665,12 +1665,12 @@ public static class AsciiMath {
 				try {
 					string st = n.InnerXml; // look for AM-delimiter on page
 					if (new Regex(@"amath|\begin{a?math}").IsMatch(st) 
-					    || st ==AM_DELIMITER1) {
+						|| st ==AM_DELIMITER1) {
 						ProcessNodeR(n,lineBreaks,false);
 					} else {
 						var indexOf = st.IndexOf(AM_DELIMITER1 +" ", StringComparison.Ordinal);
 						if (indexOf >= 0 && " <\n".Contains(st
-							    [indexOf + AM_DELIMITER1.Length])) {
+							[indexOf + AM_DELIMITER1.Length])) {
 							ProcessNodeR(n, lineBreaks, false);
 						}
 					}
@@ -1690,8 +1690,8 @@ public static class AsciiMath {
 				return 0;
 			}
 			if (n.NodeType == XmlNodeType.Comment && !lineBreaks
-			    || "form"    .Equals(n.ParentNode?.Name, StringComparison.OrdinalIgnoreCase) 
-			    || "textarea".Equals(n.ParentNode?.Name, StringComparison.OrdinalIgnoreCase)) {
+				|| "form"    .Equals(n.ParentNode?.Name, StringComparison.OrdinalIgnoreCase) 
+				|| "textarea".Equals(n.ParentNode?.Name, StringComparison.OrdinalIgnoreCase)) {
 				return 0;
 			}
 			var str = n.Value;
@@ -1785,4 +1785,5 @@ public static class AsciiMath {
 		#endregion HTML Processing
 
 	}
+		}
 }
