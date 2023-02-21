@@ -1,0 +1,3 @@
+[submodule "mml2tex"]
+	path = mml2tex
+	url = https://github.com/transpect/mml2tex
