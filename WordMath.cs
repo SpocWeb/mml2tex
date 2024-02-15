@@ -196,7 +196,7 @@ static class XStringBuilder {
 
 	public static void Revert(this StringBuilder sb) {
 		for (int i = sb.Length >> 1; --i >= 0; ) {
-			var tmp = sb[i]; sb[i] = sb[sb.Length - i -1]; sb[sb.Length - i - 1] = tmp; 
+			(sb[i], sb[sb.Length - i -1]) = (sb[sb.Length - i -1], sb[i]);
 		}
 	}
 
