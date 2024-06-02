@@ -3,4 +3,4 @@
 namespace org.SpocWeb.root.Data.xmls.MathML.Elements;
 
 [XmlRoot("mlabeledtr")]
-public class MLabeledTableRow : MTableRow { }
+public class MLabeledTableRow : MTableRow;

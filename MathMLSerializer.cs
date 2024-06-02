@@ -6,11 +6,11 @@ using System.Xml.Serialization;
 
 namespace org.SpocWeb.root.Data.xmls.MathML;
 
-public class UnknownMathMlNodeException : Exception { }
+public class UnknownMathMlNodeException : Exception;
 
-public class UnknownMathMlElementException : Exception { }
+public class UnknownMathMlElementException : Exception;
 
-public class UnknownMathMlAttributeTypeException : Exception { }
+public class UnknownMathMlAttributeTypeException : Exception;
 
 /// <summary> Generic Xml-Serializiation using static Methods, Reflection/Attributes and a String Writer </summary>
 /// <remarks>
