@@ -43,6 +43,22 @@ Consider this XML input file …
 </article>
 ```
 
+## Architecture
+
+```mermaid
+flowchart LR
+  xsl["xsl/\nCore XSLT stylesheets\n(mml2tex.xsl, katexify.xsl)"]
+  xpl["xpl/\nXProc pipeline wrappers\n(mml2tex.xpl)"]
+  texmap["texmap/\nMathML-to-TeX character maps"]
+  css["css/\nDisplay stylesheets"]
+  xmlcatalog["xmlcatalog/\nXML catalog for URI resolution"]
+
+  xmlcatalog -->|"resolves imports for"| xsl
+  xmlcatalog -->|"resolves imports for"| xpl
+  texmap -->|"imported by"| xsl
+  xsl -->|"orchestrated by"| xpl
+```
+
 ## Invoke standalone
 
 mml2tex is a library rather than a standalone stylesheet. If you intend to run mml2tex standalone, you need to include the dependencies, add a proper XML catalog and invoke Saxon with XML resolver support.
