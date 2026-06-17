@@ -47,11 +47,18 @@ Consider this XML input file …
 
 ```mermaid
 flowchart LR
-  xsl["xsl/\nCore XSLT stylesheets\n(mml2tex.xsl, katexify.xsl)"]
-  xpl["xpl/\nXProc pipeline wrappers\n(mml2tex.xpl)"]
-  texmap["texmap/\nMathML-to-TeX character maps"]
-  css["css/\nDisplay stylesheets"]
-  xmlcatalog["xmlcatalog/\nXML catalog for URI resolution"]
+  xsl["xsl/
+    Core XSLT stylesheets
+    (mml2tex.xsl, katexify.xsl)"]
+  xpl["xpl/
+    XProc pipeline wrappers
+    (mml2tex.xpl)"]
+  texmap["texmap/
+    MathML-to-TeX character maps"]
+  css["css/
+    Display stylesheets"]
+  xmlcatalog["xmlcatalog/
+    XML catalog for URI resolution"]
 
   xmlcatalog -->|"resolves imports for"| xsl
   xmlcatalog -->|"resolves imports for"| xpl
