@@ -99,7 +99,6 @@ net.sf.saxon.Transform \
 -s:mml2tex/example/example.xml
 ```
 
-
 ## Include as XSLT library
 
 You have to import `mml2tex.xsl` in your XSLT stylesheet and create a template that matches on the MathML equations. The MathML markup must be processed within the `mathml2tex` mode. You can take `xsl/mml2tex.xsl` as example:
